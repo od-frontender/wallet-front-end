@@ -1,8 +1,5 @@
+import Currency from './components/Currency/Currency';
 function App() {
-  return (
-    <div>
-      <h1>Wallet</h1>
-    </div>
-  );
+  return <Currency />;
 }
 export default App;
