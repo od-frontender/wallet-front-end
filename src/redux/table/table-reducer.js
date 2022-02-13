@@ -1,12 +1,17 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
 
-import { fetchTransactions } from './table-operations';
+import { fetchTransactions, fetchBalance } from './table-operations';
 
-const transactions = createReducer([], {
+const tableTransactions = createReducer([], {
   [fetchTransactions.fulfilled]: (_, { payload }) => payload,
 });
 
+const totalBalance = createReducer('', {
+  [fetchBalance.fulfilled]: (_, { payload }) => payload,
+});
+
 export default combineReducers({
-  transactions,
+  tableTransactions,
+  totalBalance,
 });

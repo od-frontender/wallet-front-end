@@ -1,0 +1,13 @@
+.table__buttons {
+  width: 30px;
+  height: 30px;
+  border-radius: 10%;
+  margin-left: 5px;
+  background-color: #4a56e2;
+  border-color: transparent;
+
+  &:hover,
+  &:focus {
+    background-color: #ff6596;
+  }
+}

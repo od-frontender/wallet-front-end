@@ -1,13 +1,14 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
-import transactions from './table/table-reducer';
+import tableReducer from './table/table-reducer';
 //logger
 const midleware = [...getDefaultMiddleware(), logger];
 
 const store = configureStore({
   reducer: {
-    transactions: transactions,
+    finance: tableReducer,
   },
+
   midleware,
   devTools: process.env.NODE_ENV === 'development',
 });

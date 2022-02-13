@@ -1,8 +1,11 @@
-// import { useTable } from 'react-table';
-import Container from '../Container/Container';
+import { useSelector, useDispatch } from 'react-redux';
+// import Container from '../Container/Container';
 import TableItem from './TableItem';
 const headerArr = ['Data', 'Type', 'Category', 'Comment', 'Sum', 'Balance'];
+
 export default function Table() {
+  const dispatch = useDispatch();
+
   return (
     <>
       <section className="table__section">
@@ -14,6 +17,9 @@ export default function Table() {
                   return (
                     <th className="table__header" key={el}>
                       {el}
+                      <button type="button" className="table__buttons">
+                        &darr;
+                      </button>
                     </th>
                   );
                 })}
