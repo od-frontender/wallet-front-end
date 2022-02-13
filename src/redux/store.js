@@ -1,13 +1,13 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
-// import todosReducer from './todos/todos-reducer'
-
+import transactions from './table/table-reducer';
+//logger
 const midleware = [...getDefaultMiddleware(), logger];
 
 const store = configureStore({
-  //   reducer: {
-  //     data: todosReducer,
-  //   },
+  reducer: {
+    transactions: transactions,
+  },
   midleware,
   devTools: process.env.NODE_ENV === 'development',
 });
