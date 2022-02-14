@@ -1,0 +1,16 @@
+.link {
+  text-decoration: none;
+  padding: 12px;
+  font-weight: 500;
+  color: #2a363b;
+  font-size: 18px;
+}
+
+.active {
+  composes: link;
+  color: #2196f3;
+}
+nav {
+  align-items: center;
+  text-align: center;
+}
