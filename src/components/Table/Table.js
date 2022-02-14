@@ -1,7 +1,15 @@
 import { useSelector, useDispatch } from 'react-redux';
 // import Container from '../Container/Container';
 import TableItem from './TableItem';
-const headerArr = ['Data', 'Type', 'Category', 'Comment', 'Sum', 'Balance'];
+const headerArr = [
+  'Data',
+  'Type',
+  'Category',
+  'Comment',
+  'Sum',
+  'Balance',
+  // 'Delete',
+];
 
 export default function Table() {
   const dispatch = useDispatch();
@@ -17,12 +25,20 @@ export default function Table() {
                   return (
                     <th className="table__header" key={el}>
                       {el}
-                      <button type="button" className="table__buttons">
-                        &darr;
-                      </button>
+                      {/* <select
+                        defaultValue="value1"
+                        name="select"
+                        className="table__buttons"
+                      >
+                        <option value="value1">Значение 1</option>
+                        <option value="value2" selected>
+                          Значение 2
+                        </option>
+                      </select> */}
                     </th>
                   );
                 })}
+                <th className="table__header">Delete</th>
               </tr>
             </thead>
 

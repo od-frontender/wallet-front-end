@@ -2,8 +2,8 @@ import { createAction } from '@reduxjs/toolkit';
 
 const fetchTransactions = createAction('transactions/fetch');
 
-const fetchBalance = createAction('balance/fetch');
+const getBalance = createAction('balance/getBalance');
 
-const actions = { fetchTransactions, fetchBalance };
+const actions = { fetchTransactions, getBalance };
 
 export default actions;

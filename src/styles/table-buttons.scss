@@ -1,13 +1,31 @@
 .table__buttons {
   width: 30px;
   height: 30px;
-  border-radius: 10%;
+  border-radius: 30px;
   margin-left: 5px;
-  background-color: #4a56e2;
   border-color: transparent;
+  cursor: pointer;
 
   &:hover,
   &:focus {
-    background-color: #ff6596;
+    background-color: #ffacc6;
   }
+}
+.button__remove {
+  padding: 5px 0 5px;
+  cursor: pointer;
+  overflow: hidden;
+  border-color: transparent;
+
+  border-radius: 30px;
+  box-shadow: 4px 4px 10px -3px rgba(34, 60, 80, 0.2);
+
+  &:hover,
+  &:focus {
+    transform: scale(1.1);
+    border-color: #ff6596;
+  }
+}
+.remove-img {
+  width: 60px;
 }
