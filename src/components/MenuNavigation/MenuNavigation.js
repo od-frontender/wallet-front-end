@@ -11,7 +11,7 @@ export default function MenuNavigation() {
         <svg width="44" height="44">
           <use href={`${sprite}#icon-home`}></use>
         </svg>
-        Главная
+        Home
       </NavLink>
       <NavLink
         to="/statistics"
@@ -20,7 +20,7 @@ export default function MenuNavigation() {
         <svg width="44" height="44">
           <use href={`${sprite}#icon-statistics`}></use>
         </svg>
-        Статистика
+        Statistics
       </NavLink>
       <NavLink
         to="/currency"
@@ -29,7 +29,7 @@ export default function MenuNavigation() {
         <svg width="44" height="44">
           <use href={`${sprite}#icon-currency`}></use>
         </svg>
-        Валюта
+        Currency
       </NavLink>
     </nav>
   );
