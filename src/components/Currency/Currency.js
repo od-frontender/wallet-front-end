@@ -33,12 +33,11 @@ export default function Currency() {
           <table className={s.table}>
             <thead className={s.table_label_container}>
               <tr className={s.table_label_row}>
-                <th className={s.table_label_column}>Валюта</th>
-                <th className={s.table_label_column}>Покупка</th>
-                <th className={s.table_label_column}>Продажа</th>
+                <th className={s.table_label_column}>Currency</th>
+                <th className={s.table_label_column}>Buy</th>
+                <th className={s.table_label_column}>Sale</th>
               </tr>
             </thead>
-
             <tbody className={s.table_tbody}>
               {currency.map(({ ccy, buy, sale }) => (
                 <tr key={buy} className={s.table_tbody_row}>
