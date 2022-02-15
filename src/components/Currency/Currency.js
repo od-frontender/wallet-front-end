@@ -4,6 +4,7 @@ import fetchCurrency from '../../assets/API/fetchCurrency';
 
 import s from './Currency.module.css';
 
+
 export default function Currency() {
   const [currency, setCurrency] = useState([]);
 
@@ -22,7 +23,7 @@ export default function Currency() {
   return (
     <div className={s.currency_container}>
       <table className={s.currency_table}>
-        <thead>
+        <thead >
           <tr className={s.currency_row}>
             <th className={s.currency_colmn}>Currency</th>
             <th className={s.currency_colmn}>Buy</th>
