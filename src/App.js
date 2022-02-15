@@ -1,3 +1,7 @@
+
+import MainView from './views/MainView';
+import './styles/index.scss';
+
 import Currency from './components/Currency';
 import AppBar from "./components/AppBar/AppBar";
 // import { useSelector } from "react-redux";
@@ -7,8 +11,9 @@ function App() {
   const isLoggedIn = true;
   return <>
     {isLoggedIn && <AppBar />}
-     
+     <MainView />
     <Currency />
   </>;
+
 }
 export default App;

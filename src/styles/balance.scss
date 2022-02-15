@@ -1,0 +1,44 @@
+.balance {
+  &__box {
+    // display: flex;
+    // flex-direction: column;
+    padding-left: 40px;
+    max-width: 350px;
+    padding-top: 8px;
+    padding-bottom: 13.2px;
+    background-color: #b0f3e4;
+    border-radius: 30px;
+  }
+  &__text {
+    margin: 0 10px 0 0;
+    padding: 0;
+    font-family: Circe;
+    // font-weight: normal;
+    color: #a6a6a6;
+    font-size: 12px;
+    line-height: 1.5;
+    text-transform: uppercase;
+  }
+
+  &__number {
+    margin: 0 0;
+    padding: 0;
+    font-family: Poppins;
+    font-weight: bold;
+    font-size: 30px;
+    line-height: 1.5;
+  }
+}
+
+@media screen and(max-width: 767px) {
+  .balance {
+    max-width: 280px;
+    padding-left: 30px;
+  }
+}
+
+@media screen and(max-width: 1280px) {
+  .balance {
+    max-width: 334px;
+  }
+}
