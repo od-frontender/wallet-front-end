@@ -1,0 +1,35 @@
+@import 'modern-normalize/modern-normalize.css';
+
+body {
+  margin: 0;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  margin: 0;
+}
+
+ul,
+p {
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  list-style-type: none;
+}
+
+@font-face {
+  font-family: 'Circe';
+  src: url('./fonts/Circe-Bold.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circe-Regular';
+  src: url('./fonts/Circe-Regular.otf');
+  font-weight: 300;
+  font-style: normal;
+}
