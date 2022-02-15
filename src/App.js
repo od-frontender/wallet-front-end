@@ -13,9 +13,9 @@ function App() {
     <>
       {isLoggedIn && <AppBar />}
       <MainView />
-      <Currency />
-      <CategoryList />
-      <TableList />
+      {/* <Currency />
+      <CategoryList /> */}
+      {/* <TableList /> */}
     </>
   );
 }

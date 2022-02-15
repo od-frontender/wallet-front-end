@@ -1,18 +1,19 @@
 import { useSelector, useDispatch } from 'react-redux';
-// import Container from '../Container/Container';
+import { useState, React } from 'react';
+
+import { HeaderEl } from './transactionsHeader';
 import TableItem from './TableItem';
-const headerArr = [
-  'Data',
-  'Type',
-  'Category',
-  'Comment',
-  'Sum',
-  'Balance',
-  // 'Delete',
-];
+import headerData from './headerData';
 
 export default function Table() {
   const dispatch = useDispatch();
+  const [selectedOption, setSelectedOption] = useState({
+    value: '',
+    label: '',
+  });
+  const handleChange = value => {
+    setSelectedOption({ value: value, label: value });
+  };
 
   return (
     <>
@@ -21,22 +22,8 @@ export default function Table() {
           <table className="table">
             <thead className="table__head">
               <tr className="table__header--row">
-                {headerArr.map(el => {
-                  return (
-                    <th className="table__header" key={el}>
-                      {el}
-                      {/* <select
-                        defaultValue="value1"
-                        name="select"
-                        className="table__buttons"
-                      >
-                        <option value="value1">Значение 1</option>
-                        <option value="value2" selected>
-                          Значение 2
-                        </option>
-                      </select> */}
-                    </th>
-                  );
+                {headerData.map(({ name, options }) => {
+                  return HeaderEl(name, options, handleChange, selectedOption);
                 })}
                 <th className="table__header">Delete</th>
               </tr>

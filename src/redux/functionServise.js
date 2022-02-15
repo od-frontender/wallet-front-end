@@ -1,16 +1,16 @@
-export function userBalanse(payload) {
-  //   console.log('payload', payload);
-  const byType = payload.map(el => (el.type ? el.sum : null));
-  //   console.log('byType', byType);
+import dateFormat from 'dateformat';
 
-  //   const sum = byType.reduce((previousValue, current) => {
-  //     if (previousValue === 'number' && current === 'number')
-  //       console.log('previousValue', previousValue, current);
-  //     // return previousValue + current;
-  //     return current;
-  //   });
-  //   console.log('sum', sum);
+export function userBalanсe(payload) {
+  const data = payload.map(({ total, createdAt }) => {
+    return { total, createdAt: dateFormat(createdAt, 'mm.dd.yy') };
+  });
 
-  //   return sum;
-  return 320;
+  const largestData = data.sort((a, b) => {
+    return Date.parse(b.createdAt) - Date.parse(a.createdAt);
+  });
+  console.log(largestData);
+
+  const result = largestData[0].total;
+  console.log('result', result);
+  return result;
 }
