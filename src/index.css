@@ -20,3 +20,16 @@ p {
 li {
   list-style-type: none;
 }
+
+@font-face {
+  font-family: 'Circe';
+  src: url('./fonts/Circe-Bold.otf');
+  font-weight: bold;
+  font-style: normal;
+}
+@font-face {
+  font-family: 'Circe-Regular';
+  src: url('./fonts/Circe-Regular.otf');
+  font-weight: 300;
+  font-style: normal;
+}

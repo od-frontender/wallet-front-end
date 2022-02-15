@@ -1,7 +1,6 @@
-.currency_table {
+.table {
   border-radius: 30px;
   display: block;
-  height: 348px;
   width: 347px;
   text-align: center;
   color: #fff;
@@ -13,19 +12,27 @@
   margin-right: auto;
   position: relative;
 }
-.currency_table::before {
+.table::before {
   position: absolute;
   content: '';
   background-image: url('../../images/vawe.svg');
   left: 0;
-  bottom: 0;
+  bottom: -220px;
   width: 100%;
-  height: 96px;
+  height: 100%;
   background-repeat: no-repeat;
   background-size: 100%;
 }
-.currency_row {
+.table_label_container {
+  display: block;
+  font-family: 'Circe';
+  font-weight: 700;
+  font-size: 18px;
+  line-height: 26.53px;
+}
+.table_label_row {
   display: flex;
+  justify-content: space-between;
   padding: 17px 30px;
   background: linear-gradient(
     180deg,
@@ -33,22 +40,17 @@
     rgba(255, 255, 255, 0) 116.22%
   );
 }
-.currency_column {
-  font-size: 18px;
-  line-height: 26.53px;
-  padding: 16px 31px 17px;
-}
 
-.currency_tbody {
+.table_tbody {
+  font-family: 'Circe-Regular';
+  font-size: 16px;
+  line-height: 23.58px;
+  display: block;
   border: none;
-  height: 100%;
-}
-.currency_tbody.tr:first-child td {
   padding-top: 20px;
-}
-.currency_tbody.td {
-  border: none;
-  padding-bottom: 23px;
+  padding-left: 30px;
+  padding-right: 30px;
+  padding-bottom: 149px;
 }
 
 @media (min-width: 1280px) {
@@ -57,4 +59,11 @@
     height: 348px;
     width: 347px;
   }
+}
+.table_tbody_row {
+  display: flex;
+  justify-content: space-between;
+}
+.table_tbody_row:not(:last-child) {
+  margin-bottom: 23px;
 }

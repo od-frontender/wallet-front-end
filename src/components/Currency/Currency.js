@@ -1,18 +1,23 @@
 import { useEffect, useState } from 'react';
 
 import fetchCurrency from '../../assets/API/fetchCurrency';
+import Spinner from '../Spinner';
 
 import s from './Currency.module.css';
 
 
 export default function Currency() {
   const [currency, setCurrency] = useState([]);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const fetch = async () => {
       try {
+        setIsLoading(true);
         const data = await fetchCurrency();
+        data.length = 3;
         setCurrency(data);
+        setIsLoading(false);
       } catch (error) {
         console.log(error);
       }
@@ -21,26 +26,37 @@ export default function Currency() {
   }, []);
 
   return (
-    <div className={s.currency_container}>
-      <table className={s.currency_table}>
-        <thead >
-          <tr className={s.currency_row}>
-            <th className={s.currency_colmn}>Currency</th>
-            <th className={s.currency_colmn}>Buy</th>
-            <th className={s.currency_colmn}>Sale</th>
-          </tr>
-        </thead>
 
-        <tbody className={s.currency_tbody}>
-          {currency.map(({ ccy, buy, sale }) => (
-            <tr key={buy}>
-              <td>{ccy}</td>
-              <td>{Number(buy).toFixed(2)}</td>
-              <td>{Number(sale).toFixed(2)}</td>
-            </tr>
-          ))}
-        </tbody>
-      </table>
-    </div>
+    <>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <div>
+          <table className={s.table}>
+            <thead className={s.table_label_container}>
+              <tr className={s.table_label_row}>
+                <th className={s.table_label_column}>Currency</th>
+                <th className={s.table_label_column}>Buy</th>
+                <th className={s.table_label_column}>Sale</th>
+              </tr>
+            </thead>
+            <tbody className={s.table_tbody}>
+              {currency.map(({ ccy, buy, sale }) => (
+                <tr key={buy} className={s.table_tbody_row}>
+                  <td className={s.table_tbody_column}>{ccy}</td>
+                  <td className={s.table_tbody_column}>
+                    {Number(buy).toFixed(2)}
+                  </td>
+                  <td className={s.table_tbody_column}>
+                    {Number(sale).toFixed(2)}
+                  </td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+      )}
+    </>
+
   );
 }
