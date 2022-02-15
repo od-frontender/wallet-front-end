@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { fetchTransactions } from '../../redux/table/table-operations';
-import { getTransactions } from '../../redux/table/table-selectors';
+import { fetchTransactions } from '../../redux/transactionsTable/transactions-operations';
+import { getTransactions } from '../../redux/transactionsTable/transactions-selectors';
 import deletingImg from '../../images/trash_violet.png';
 
 export default function TableItem() {
@@ -23,12 +23,12 @@ export default function TableItem() {
               // <tbody className="table__body">
               <tr key={_id} className="table__data-row">
                 <td className="table__item">{month}</td>
-                <td className="table__item">{type === true ? '+' : '-'}</td>
+                <td className="table__item">{type ? '+' : '-'}</td>
                 <td className="table__item">{category}</td>
                 <td className="table__item">{comment}</td>
                 <td
                   className={
-                    type === true
+                    type
                       ? 'table__item--income table__item'
                       : 'table__item--spending table__item'
                   }

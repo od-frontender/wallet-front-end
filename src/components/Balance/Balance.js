@@ -1,6 +1,6 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
-import { getBalance } from '../../redux/table/table-selectors';
+import { getBalance } from '../../redux/transactionsTable/transactions-selectors';
 // import { fetchBalance } from '../../redux/table/table-operations';
 
 export default function Balance() {

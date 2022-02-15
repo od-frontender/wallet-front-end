@@ -1,11 +1,11 @@
-import TableView from './views/TableView';
+import MainView from './views/MainView';
 import './styles/index.scss';
 
 function App() {
   return (
     <>
       <h1>Wallet</h1>
-      <TableView />
+      <MainView />
     </>
   );
 }

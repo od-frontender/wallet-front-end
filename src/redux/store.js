@@ -1,6 +1,6 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
-import tableReducer from './table/table-reducer';
+import tableReducer from './transactions-table/transactions-reducer';
 //logger
 const midleware = [...getDefaultMiddleware(), logger];
 

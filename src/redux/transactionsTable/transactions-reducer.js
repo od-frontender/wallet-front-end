@@ -1,8 +1,8 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import { getTotalBalance } from '../functionServise';
+import { userBalanse } from '../functionServise';
 
-import { fetchTransactions } from './table-operations';
+import { fetchTransactions } from './transactions-operations';
 
 const tableTransactions = createReducer([], {
   [fetchTransactions.fulfilled]: (_, { payload }) => payload,
@@ -22,7 +22,7 @@ const tableTransactions = createReducer([], {
 });
 
 const totalBalance = createReducer('', {
-  [fetchTransactions.fulfilled]: (_, { payload }) => getTotalBalance(payload),
+  [fetchTransactions.fulfilled]: (_, { payload }) => userBalanse(payload),
 });
 
 export default combineReducers({

@@ -1,6 +1,6 @@
-export function getTotalBalance(payload) {
+export function userBalanse(payload) {
   //   console.log('payload', payload);
-  const byType = payload.map(el => (el.type === true ? el.sum : null));
+  const byType = payload.map(el => (el.type ? el.sum : null));
   //   console.log('byType', byType);
 
   //   const sum = byType.reduce((previousValue, current) => {

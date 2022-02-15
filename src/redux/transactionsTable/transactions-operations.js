@@ -1,6 +1,6 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import actions from './table-actions';
+import actions from './transactions-actions';
 
 axios.defaults.baseURL = 'http://localhost:3001/api';
 
