@@ -1,4 +1,4 @@
-import { Routes, Route } from 'react-router';
+import { Router, Routes, Route } from 'react-router';
 import MainView from './views/MainView';
 import './styles/index.scss';
 import AppBar from './components/AppBar/AppBar';
@@ -8,6 +8,7 @@ import CategoryList from './components/Statistic/Category/CategoryList';
 import TableList from './components/Statistic/Table/TableList';
 import MenuNavigation from './components/MenuNavigation/MenuNavigation';
 import Container from './components/Container/Container';
+import NotFoundView from './components/NotFoundView/NotFoundView';
 
 function App() {
   // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -19,11 +20,12 @@ function App() {
         <MenuNavigation />
         <Routes>
           <Route path="/" element={<MainView />} />
+          <Route path="/statistics" element={<TableList />}>
+            {/* <Route element={<TableList />} /> */}
+          </Route>
           <Route path="/currency" element={<Currency />} />
-          <Route path="/statistics" element={<CategoryList />} />
-          {/* <Route path="/statistics" element={<TableList />} /> */}
+          <Route path="*" element={<NotFoundView />} />
         </Routes>
-        {/* <TableList /> */}
       </Container>
     </>
   );
