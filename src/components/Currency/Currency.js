@@ -5,6 +5,7 @@ import Spinner from '../Spinner';
 
 import s from './Currency.module.css';
 
+
 export default function Currency() {
   const [currency, setCurrency] = useState([]);
   const [isLoading, setIsLoading] = useState(false);
@@ -25,6 +26,7 @@ export default function Currency() {
   }, []);
 
   return (
+
     <>
       {isLoading ? (
         <Spinner />
@@ -55,5 +57,6 @@ export default function Currency() {
         </div>
       )}
     </>
+
   );
 }
