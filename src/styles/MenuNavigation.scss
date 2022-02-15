@@ -1,0 +1,20 @@
+.link {
+  text-decoration: none;
+  padding: 12px;
+  color: #2a363b;
+  fill: '#6e78e8';
+}
+
+.active-style {
+  composes: link;
+  color: #2196f3;
+  font-size: 18px;
+  font-weight: 500;
+}
+nav {
+  align-items: center;
+  text-align: center;
+}
+.icon-home {
+  fill: red;
+}
