@@ -5,6 +5,7 @@ import AppBar from './components/AppBar/AppBar';
 import Currency from './components/Currency';
 import CategoryList from './components/Statistic/Category/CategoryList';
 import TableList from './components/Statistic/Table/TableList';
+import RegisterPage from './pages/RegisterPage/';
 
 function App() {
   // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -12,6 +13,7 @@ function App() {
   return (
     <>
       {isLoggedIn && <AppBar />}
+      <RegisterPage />
       <MainView />
       <Currency />
       <CategoryList />
