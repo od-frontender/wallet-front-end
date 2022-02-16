@@ -1,7 +1,10 @@
 import React from 'react';
+import Media from 'react-media';
 import TableItem from './TableItem';
 import Table from './Table';
 import CategoryList from '../Category/CategoryList';
+import Balance from '../../Balance/Balance';
+import Currency from '../../Currency';
 
 function TableList() {
   const [posts, setPosts] = React.useState([
@@ -12,11 +15,29 @@ function TableList() {
   ]);
   return (
     <>
-      <CategoryList />
-      <TableItem />
-      {posts.map(post => (
-        <Table post={post} key={post.id} />
-      ))}
+      <Media query="(max-width: 768px)">
+        {matches =>
+          matches ? (
+            <>
+              <CategoryList />
+              <TableItem />
+              {posts.map(post => (
+                <Table post={post} key={post.id} />
+              ))}
+            </>
+          ) : (
+            <>
+              <Currency />
+              <Balance />
+              <CategoryList />
+              <TableItem />
+              {posts.map(post => (
+                <Table post={post} key={post.id} />
+              ))}
+            </>
+          )
+        }
+      </Media>
     </>
   );
 }

@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom';
 import Media from 'react-media';
 import sprite from '../../images/sprite.svg';
+import NotFoundView from '../NotFoundView/NotFoundView';
 
 export default function MenuNavigation() {
   return (
@@ -52,6 +53,9 @@ export default function MenuNavigation() {
                 <use href={`${sprite}#icon-statistics`}></use>
               </svg>
               Statistics
+            </NavLink>
+            <NavLink to="/currency">
+              <NotFoundView />
             </NavLink>
           </nav>
         )
