@@ -1,6 +1,6 @@
 import Select from 'react-select';
 import { useSelector, useDispatch } from 'react-redux';
-import { filtredTransactions } from '../../redux/transactionsTable/transactions-actions';
+import * as asctions from '../../redux/transactionsTable/transactions-actions';
 import {
   getFiltredValue,
   getVisibleTransatcions,
@@ -17,7 +17,7 @@ export function HeaderEl(el, options, handleChange, selectedOption) {
         <Select
           defaultValue={filterValue}
           options={options}
-          onChange={e => dispatch(filtredTransactions(e.value))}
+          onChange={e => dispatch(asctions.filtredTransactions(e.value))}
           name="select"
           className="table__buttons"
         ></Select>

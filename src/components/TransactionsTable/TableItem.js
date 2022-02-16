@@ -11,9 +11,9 @@ export default function TableItem() {
   const transactions = useSelector(getTransactions);
   const removeImg = deletingImg;
 
-  useEffect(() => {
-    dispatch(fetchTransactions());
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(fetchTransactions());
+  // }, [dispatch]);
   return (
     <>
       {

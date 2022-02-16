@@ -1,27 +1,32 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import actions from './transactions-actions';
+import * as actions from './transactions-actions';
 
 axios.defaults.baseURL = 'http://localhost:3001/api';
 
-const getTransactions = () => {
-  return axios
-    .get('/transactions')
-    .then(response => response.data)
-    .catch(error => {
-      throw new Error(error.message);
-    });
+const getTransactions = async () => {
+  const { data } = await axios.get('/transactions');
+  console.log('data', data);
+  return data;
 };
 
 export const fetchTransactions = createAsyncThunk(
-  actions.fetchTransactions,
-  async (_, { rejectWithValue }) => {
+  'transactions/fetch',
+  async function (_, { rejectWithValue }) {
     try {
-      const transactions = await getTransactions();
-      console.log('operations:', transactions);
-      return transactions;
+      const data = await getTransactions();
+      return data;
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(error.message);
     }
   },
 );
+
+// const getTransactions = () => {
+//   return axios
+//     .get('/transactions')
+//     .then(response =>  response.data)
+//     .catch(error => {
+//       throw new Error(error.message);
+//     });
+// };

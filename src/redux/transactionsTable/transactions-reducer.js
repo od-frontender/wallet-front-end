@@ -1,24 +1,20 @@
 import { createReducer } from '@reduxjs/toolkit';
 import { combineReducers } from 'redux';
-import { userBalanсe } from '../functionServise';
+import { getUserBalance } from '../getUserBalance';
 import { filtredTransactions } from './transactions-actions';
 import { fetchTransactions } from './transactions-operations';
 
 const tableTransactions = createReducer([], {
-  [fetchTransactions.fulfilled]: (state, { payload }) => ({ state: payload }),
-  // {
-  //   console.log('payload=>', payload);
-
-  //   return payload;
-  // },
+  [fetchTransactions.fulfilled]: (_, { payload }) => payload,
 });
 
 const totalBalance = createReducer('', {
-  [fetchTransactions.fulfilled]: (state, { payload }) => userBalanсe(payload),
+  [fetchTransactions.fulfilled]: (state, { payload }) =>
+    getUserBalance(payload),
 });
 
 const filter = createReducer('', {
-  [filtredTransactions]: (state, { payload }) => ({ payload }),
+  [filtredTransactions]: (_, { payload }) => payload,
 });
 
 export default combineReducers({
