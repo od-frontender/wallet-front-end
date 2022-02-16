@@ -4,9 +4,11 @@ import { useState, React } from 'react';
 import { HeaderEl } from './transactionsHeader';
 import TableItem from './TableItem';
 import headerData from './headerData';
+import MobileTable from './MobileTable';
 
 export default function Table() {
   const dispatch = useDispatch();
+
   const [selectedOption, setSelectedOption] = useState({
     value: '',
     label: '',
@@ -17,7 +19,7 @@ export default function Table() {
 
   return (
     <>
-      <section className="table__section">
+      {/* <section className="table__section">
         <div className="table__container">
           <table className="table">
             <thead className="table__head">
@@ -33,10 +35,10 @@ export default function Table() {
               <TableItem />
             </tbody>
           </table>
-
-          {/* <table className="table__list"></table> */}
         </div>
-      </section>
+      </section> */}
+      {/* mobile */}
+      {/* <MobileTable /> */}
     </>
   );
 }

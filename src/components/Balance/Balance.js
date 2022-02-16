@@ -1,7 +1,7 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { getBalance } from '../../redux/transactionsTable/transactions-selectors';
-// import { fetchBalance } from '../../redux/table/table-operations';
+import st from './Balance.module.scss';
 
 export default function Balance() {
   const dispatch = useDispatch();
@@ -12,9 +12,9 @@ export default function Balance() {
   }, [dispatch]);
 
   return (
-    <div className="balance__box">
-      <p className="balance__text">Your balance</p>
-      <p className="balance__number">&#8372;&nbsp;{totalbalance}</p>
+    <div className={st.balance__box}>
+      <p className={st.balance__text}>Your balance</p>
+      <p className={st.balance__number}>&#8372;&nbsp;{totalbalance}</p>
     </div>
   );
 }

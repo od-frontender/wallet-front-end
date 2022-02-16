@@ -6,6 +6,7 @@ import { fetchTransactions } from '../redux/transactionsTable/transactions-opera
 
 export default function MainView() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchTransactions());
   }, [dispatch]);

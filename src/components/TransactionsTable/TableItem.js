@@ -19,7 +19,7 @@ export default function TableItem() {
       {
         // transactions.length > 0 ?
         transactions.map(
-          ({ _id, createdAt, month, type, category, comment, sum, total }) => {
+          ({ _id, createdAt, type, category, comment, sum, total }) => {
             return (
               <tr key={_id} className="table__data-row">
                 <td className="table__item">
