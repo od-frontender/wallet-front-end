@@ -1,0 +1,60 @@
+.container {
+  width: 540px;
+  height: 540px;
+  border-radius: 20px;
+  background-color: #ffffff;
+  left: 50%;
+  top: 50%;
+  border: 1px solid black;
+  margin: 0px;
+}
+
+.box {
+  margin: 40px 160px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.text {
+  padding-left: 70px;
+  padding-right: 70px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 24px;
+  color: #e0e0e0;
+}
+
+.form {
+  margin: 40px 80px 60px;
+}
+
+	.title {
+  font-style: normal;
+  font-weight: normal;
+  font-size: 30px;
+  line-height: 45px;
+  text-align: center;
+  color: #000000;
+ }
+
+.formBox {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+}
+.formBox input,
+.formBox textarea,
+.formBox select {
+  outline: none;
+}
+.labelBox {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

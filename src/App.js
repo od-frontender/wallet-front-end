@@ -8,6 +8,10 @@ import TableList from './components/Statistic/Table/TableList';
 import MenuNavigation from './components/MenuNavigation/MenuNavigation';
 import Container from './components/Container/Container';
 import NotFoundView from './components/NotFoundView/NotFoundView';
+import { ModalProvider } from './components/Modal/ModalContext';
+import Controls from './components/BtnAddTransaction/BtnAddTransaction';
+
+import TransactionForm from './components/TransactionForm/TransactionForm';
 
 function App() {
   // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -23,6 +27,10 @@ function App() {
           <Route path="/currency" element={<Currency />} />
           <Route path="*" element={<NotFoundView />} />
         </Routes>
+        <ModalProvider>
+        <Controls />
+        <TransactionForm />
+        </ModalProvider> 
       </Container>
     </>
   );
