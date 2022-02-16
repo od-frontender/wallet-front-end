@@ -23,7 +23,12 @@ export default function Modal({ onClose }) {
       onClose();
     }
   };
-
+  const logout = (e) => {
+    if ((e.currentTarget === e.target)) {
+      console.log("dispatch(authOperations.logOut())");
+        onClose();
+    }
+  };
   return (
     <div className={s.ModalBackdrop} onClick={handleBackdropClick}>
       
@@ -33,7 +38,7 @@ export default function Modal({ onClose }) {
         <button
           type="button"
           className={s.buttonLogoutYN}
-          onClick={console.log("() => dispatch(authOperations.logOut())")}>Yes
+          onClick={logout}>Yes
         </button>
          <button
           type="button"

@@ -1,7 +1,7 @@
 import { Routes, Route } from 'react-router';
 import MainView from './views/MainView';
 import './styles/index.scss';
-import AppBar from './components/AppBar/AppBar';
+import AppBar from './components/AppBar';
 
 import Currency from './components/Currency';
 import TableList from './components/Statistic/Table/TableList';
