@@ -4,6 +4,7 @@ import sprite from '../../images/sprite.svg';
 import NotFoundView from '../NotFoundView/NotFoundView';
 import Currency from '../Currency';
 import MainView from '../../views/MainView';
+import TableList from '../Statistic/Table/TableList';
 
 export default function MenuNavigation() {
   return (
@@ -12,7 +13,7 @@ export default function MenuNavigation() {
         matches ? (
           <nav>
             <NavLink
-              to="/"
+              to="/dashboard"
               className={({ isActive }) => (isActive ? 'active-style' : 'link')}
             >
               <svg width="44" height="44">
@@ -26,6 +27,7 @@ export default function MenuNavigation() {
               <svg width="44" height="44">
                 <use href={`${sprite}#icon-statistics`}></use>
               </svg>
+              {/* <TableList /> */}
             </NavLink>
             <NavLink
               to="/currency"
@@ -34,6 +36,7 @@ export default function MenuNavigation() {
               <svg width="44" height="44">
                 <use href={`${sprite}#icon-currency`}></use>
               </svg>
+              {/* <Currency /> */}
             </NavLink>
           </nav>
         ) : (
@@ -55,9 +58,6 @@ export default function MenuNavigation() {
                 <use href={`${sprite}#icon-statistics`}></use>
               </svg>
               Statistics
-            </NavLink>
-            <NavLink replace to="/">
-              <NotFoundView />
             </NavLink>
           </nav>
         )
