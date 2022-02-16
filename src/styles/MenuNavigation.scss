@@ -15,6 +15,8 @@ nav {
   align-items: center;
   text-align: center;
 }
-.icon-home {
-  fill: red;
+.nav_menu {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 }

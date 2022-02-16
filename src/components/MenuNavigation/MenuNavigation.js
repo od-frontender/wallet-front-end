@@ -34,12 +34,12 @@ export default function MenuNavigation() {
             </NavLink>
           </nav>
         ) : (
-          <nav>
+          <nav className="nav_menu">
             <NavLink
               to="/"
               className={({ isActive }) => (isActive ? 'active-style' : 'link')}
             >
-              <svg width="44" height="44">
+              <svg width="24" height="24">
                 <use href={`${sprite}#icon-home`}></use>
               </svg>
               Home
@@ -48,7 +48,7 @@ export default function MenuNavigation() {
               to="/statistics"
               className={({ isActive }) => (isActive ? 'active-style' : 'link')}
             >
-              <svg width="44" height="44">
+              <svg width="24" height="24">
                 <use href={`${sprite}#icon-statistics`}></use>
               </svg>
               Statistics
