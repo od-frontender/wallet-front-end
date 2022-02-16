@@ -8,6 +8,7 @@ import TableList from './components/Statistic/Table/TableList';
 import MenuNavigation from './components/MenuNavigation/MenuNavigation';
 import Container from './components/Container/Container';
 import NotFoundView from './components/NotFoundView/NotFoundView';
+import DashBoard from './components/DashBoard/DashBoard';
 
 function App() {
   // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -16,13 +17,16 @@ function App() {
     <>
       <Container>
         {isLoggedIn && <AppBar />}
-        <MenuNavigation />
-        <Routes>
-          <Route path="/" element={<MainView />} />
+        {/* <MenuNavigation /> */}
+        <DashBoard />
+        {/* <Routes>
+          <Route path="/" element={<DashBoard />} /> */}
+
+        {/* <Route path="/" element={<MainView />} />
           <Route path="/statistics" element={<TableList />} />
           <Route path="/currency" element={<Currency />} />
-          <Route path="*" element={<NotFoundView />} />
-        </Routes>
+          <Route path="*" element={<NotFoundView />} /> */}
+        {/* </Routes> */}
       </Container>
     </>
   );
