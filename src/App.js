@@ -6,6 +6,7 @@ import Currency from './components/Currency';
 import CategoryList from './components/Statistic/Category/CategoryList';
 import TableList from './components/Statistic/Table/TableList';
 import RegisterPage from './pages/RegisterPage/';
+import LoginPage from './pages/LoginPage';
 
 function App() {
   // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -14,6 +15,7 @@ function App() {
     <>
       {isLoggedIn && <AppBar />}
       <RegisterPage />
+      <LoginPage />
       <MainView />
       <Currency />
       <CategoryList />
