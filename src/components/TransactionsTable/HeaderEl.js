@@ -5,13 +5,15 @@ import {
   getFiltredValue,
   getVisibleTransatcions,
 } from '../../redux/transactionsTable/transactions-selectors';
+import st from './styles/Table.module.scss';
+import btn from './styles/Buttons.module.scss';
 
 export function HeaderEl(el, options, handleChange, selectedOption) {
   const dispatch = useDispatch();
   const filterValue = useSelector(getFiltredValue);
 
   return (
-    <th className="table__header" key={el}>
+    <th className={st.table__header} key={el}>
       {el}
       {el !== 'Category' && el !== 'Comment' ? (
         <Select
@@ -19,7 +21,7 @@ export function HeaderEl(el, options, handleChange, selectedOption) {
           options={options}
           onChange={e => dispatch(asctions.filtredTransactions(e.value))}
           name="select"
-          className="table__buttons"
+          className={btn.table__buttons}
         ></Select>
       ) : null}
     </th>

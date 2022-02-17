@@ -1,10 +1,11 @@
 import { useSelector, useDispatch } from 'react-redux';
 import { useState, React } from 'react';
 
-import { HeaderEl } from './transactionsHeader';
+import { HeaderEl } from './HeaderEl';
 import TableItem from './TableItem';
 import headerData from './headerData';
 import MobileTable from './MobileTable';
+import s from './styles/Table.module.scss';
 
 export default function Table() {
   const dispatch = useDispatch();
@@ -19,26 +20,26 @@ export default function Table() {
 
   return (
     <>
-      {/* <section className="table__section">
-        <div className="table__container">
-          <table className="table">
-            <thead className="table__head">
-              <tr className="table__header--row">
+      <section className={s.table__section}>
+        <div className={s.table__container}>
+          <table className={s.table}>
+            <thead className={s.table__head}>
+              <tr className={s.table__header}>
                 {headerData.map(({ name, options }) => {
                   return HeaderEl(name, options, handleChange, selectedOption);
                 })}
-                <th className="table__header">Delete</th>
+                <th className={s.table__header}>Delete</th>
               </tr>
             </thead>
 
-            <tbody className="table__body">
+            <tbody className={s.table__body}>
               <TableItem />
             </tbody>
           </table>
         </div>
-      </section> */}
-      {/* mobile */}
-      <MobileTable />
+      </section>
+
+      {/* <MobileTable /> */}
     </>
   );
 }

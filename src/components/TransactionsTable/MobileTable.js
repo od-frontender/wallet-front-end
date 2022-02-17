@@ -3,11 +3,74 @@ import { useEffect } from 'react';
 import { nanoid } from 'nanoid';
 import dateFormat from 'dateformat';
 
-import s from './MobileTable.module.scss';
+import s from './styles/MobileTable.module.scss';
+// import st from '../../styles/index.scss';
 import Balance from '../Balance/Balance';
 import { getTransactions } from '../../redux/transactionsTable/transactions-selectors';
 import { fetchTransactions } from '../../redux/transactionsTable/transactions-operations';
 //
+
+const forGreenCard = s.table__cardGreen + ' ' + s.table__box;
+const forRedCard = s.table__cardRed + ' ' + s.table__box;
+
+// const income = st.table__income + ' ' + st.table__item;
+// const spending = st.table__spending + ' ' + st.table__item;
+export default function MobileTable() {
+  const transactions = useSelector(getTransactions);
+
+  const dispatch = useDispatch();
+  //   useEffect(() => {
+  //     dispatch(fetchTransactions());
+  //   }, [dispatch]);
+  return (
+    <>
+      <section className={s.table__section}>
+        <div className={s.table__container}>
+          {data.length > 0
+            ? data.map(
+                ({ _id, createdAt, type, category, comment, sum, total }) => {
+                  return (
+                    <div className={type ? forGreenCard : forRedCard}>
+                      <ul className={s.table__card}>
+                        <li key={_id} className={s.table__item}>
+                          <p>Data</p>
+                          <p>{dateFormat(createdAt, 'mm.dd.yy')}</p>
+                        </li>
+
+                        <li key={createdAt} className={s.table__item}>
+                          <p>Type</p>
+                          <p>{type ? '+' : '-'}</p>
+                        </li>
+                        <li key={nanoid()} className={s.table__item}>
+                          <p>Category</p>
+                          <p>{category}</p>
+                        </li>
+                        <li key={nanoid()} className={s.table__item}>
+                          <p>Comment</p>
+                          <p>{comment}</p>
+                        </li>
+                        {/* <li key={nanoid()} className={type ? income : spending}>
+                          <p>Sum</p>
+                          <p>{sum}</p>
+                        </li> */}
+                        <li key={nanoid()} className={s.table__item}>
+                          <p>Balance</p>
+                          <p>{total}</p>
+                        </li>
+                        <li key={nanoid()} className={s.table__item}>
+                          <p>Delete</p>
+                        </li>
+                      </ul>
+                    </div>
+                  );
+                },
+              )
+            : 'Loading...'}
+        </div>
+      </section>
+    </>
+  );
+}
 const data = [
   {
     _id: '620948123ef416aac0e01164',
@@ -105,64 +168,3 @@ const data = [
     month: 2,
   },
 ];
-
-// const classs = classes.SectionOne + ' ' + classes.SectionTwo;
-const forGreenCard = s.table__cardGreen + ' ' + s.table__box;
-const forRedCard = s.table__cardRed + ' ' + s.table__box;
-export default function MobileTable() {
-  const transactions = useSelector(getTransactions);
-
-  const dispatch = useDispatch();
-  //   useEffect(() => {
-  //     dispatch(fetchTransactions());
-  //   }, [dispatch]);
-  return (
-    <>
-      {/* <Balance /> */}
-      <section className={s.table__section}>
-        <div className={s.table__container}>
-          {data.length > 0
-            ? data.map(
-                ({ _id, createdAt, type, category, comment, sum, total }) => {
-                  return (
-                    <div className={type ? forGreenCard : forRedCard}>
-                      <ul className={s.table__card}>
-                        <li key={_id} className={s.table__item}>
-                          <p>Data</p>
-                          <p>{dateFormat(createdAt, 'mm.dd.yy')}</p>
-                        </li>
-
-                        <li key={createdAt} className={s.table__item}>
-                          <p>Type</p>
-                          <p>{type ? '+' : '-'}</p>
-                        </li>
-                        <li key={nanoid()} className={s.table__item}>
-                          <p>Category</p>
-                          <p>{category}</p>
-                        </li>
-                        <li key={nanoid()} className={s.table__item}>
-                          <p>Comment</p>
-                          <p>{comment}</p>
-                        </li>
-                        <li key={nanoid()} className={s.table__item}>
-                          <p>Sum</p>
-                          <p>{sum}</p>
-                        </li>
-                        <li key={nanoid()} className={s.table__item}>
-                          <p>Balance</p>
-                          <p>{total}</p>
-                        </li>
-                        <li key={nanoid()} className={s.table__item}>
-                          <p>Delete</p>
-                        </li>
-                      </ul>
-                    </div>
-                  );
-                },
-              )
-            : 'Loading...'}
-        </div>
-      </section>
-    </>
-  );
-}

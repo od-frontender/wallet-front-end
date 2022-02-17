@@ -1,6 +1,16 @@
 // body {
 //   font-family: 'Poppins', sans-serif;
 // }
+.container {
+  margin: auto;
+}
+
+@media screen and (min-width: 768px) {
+  .container {
+    padding: 0 40px;
+  }
+}
+
 .table {
   width: 100%;
   border-collapse: collapse;
@@ -25,26 +35,26 @@
     }
   }
 
-  &__data-row:nth-child(n + 2) {
+  &__dataRow:nth-child(n + 2) {
     border-top: 1px solid #dcdcdf;
     box-shadow: 0px 1px 0px rgba(255, 255, 255, 0.6);
   }
   &__item {
     padding-top: 15px;
+  }
+
+  &__spending {
+    color: #ff6596;
+    font-family: 'Circe Bold';
+  }
+  &__income {
+    color: #24cca7;
+  }
+  &__income,
+  &__spending {
     font-size: 16px;
     line-height: 1.5;
-
-    &--spending {
-      color: #ff6596;
-      font-family: 'Circe Bold';
-    }
-    &--income {
-      color: #24cca7;
-    }
-    &--income,
-    &--spending {
-      font-weight: bold;
-    }
+    font-weight: bold;
   }
 }
 .table th,

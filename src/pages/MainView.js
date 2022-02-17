@@ -35,11 +35,3 @@ export default function MainView() {
     </>
   );
 }
-
-//    {/* {table.length > 0 ? (
-//         <>
-//           <Table />
-//         </>
-//       ) : (
-//         <p className="section__title">Loading...</p>
-//       )} */}

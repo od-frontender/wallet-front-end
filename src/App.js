@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router';
-import MainView from './views/MainView';
+import MainView from './pages/MainView';
 import './styles/index.scss';
 import AppBar from './components/AppBar';
 
