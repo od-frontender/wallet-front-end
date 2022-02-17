@@ -2,7 +2,7 @@ import { useState } from 'react';
 // import { useDispatch } from 'react-redux';
 import s from './LoginForm.module.scss';
 import Icons from '../../images/sprite.svg';
-
+import Logo from '../Logo';
 export default function LoginForm() {
   // const dispatch = useDispatch();
   const [email, setEmail] = useState('');
@@ -38,6 +38,7 @@ export default function LoginForm() {
     <>
       <div className={s.form_container}>
         <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
+          <Logo />
           <label className={s.label}>
             <svg width="20" height="16" className={s.svg}>
               <use xlinkHref={`${Icons}#icon-emailIcon`} />

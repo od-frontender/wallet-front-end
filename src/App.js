@@ -20,9 +20,10 @@ function App() {
     <>
       <Container>
         {isLoggedIn && <AppBar />}
-        <MenuNavigation />
         <RegisterPage />
         <LoginPage />
+        <MenuNavigation />
+
         <Routes>
           <Route path="/" element={<MainView />} />
           <Route path="/statistics" element={<TableList />} />

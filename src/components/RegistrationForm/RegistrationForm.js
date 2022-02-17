@@ -2,6 +2,7 @@ import { useState } from 'react';
 // import { useDispatch } from 'react-redux';
 import s from './RegistrationForm.module.scss';
 import Icons from '../../images/sprite.svg';
+import Logo from '../Logo';
 
 export default function RegistrationForm() {
   // const dispatch = useDispatch();
@@ -49,6 +50,7 @@ export default function RegistrationForm() {
     <>
       <div className={s.form_container}>
         <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
+          <Logo />
           <label className={s.label}>
             <svg width="20" height="16" className={s.svg}>
               <use xlinkHref={`${Icons}#icon-emailIcon`} />
