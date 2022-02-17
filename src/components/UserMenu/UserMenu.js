@@ -3,14 +3,22 @@
 import exitIcon from "./exit.svg";
 
 import s from "./UserMenu.module.scss";
-
-
+import { useState  } from "react";
+import Modal from "../ModalLogout";
 import useMediaQuery from '@mui/material/useMediaQuery';
 
 
 
 export default function UserMenu() {
-//   const dispatch = useDispatch();
+  const [showModal, setshowModal] = useState(false);
+   const openModal = (e) => {
+    toggleModal();
+  };
+
+  const toggleModal = () => {
+    setshowModal(!showModal);
+  };
+
     // const name = useSelector(authSelectors.getUsername);
     const name = "Dima";
     const matches = useMediaQuery('(min-width:768px)');
@@ -24,11 +32,12 @@ export default function UserMenu() {
        <button
          type="button"
           className={s.buttonLogout}
-          onClick={console.log("() => dispatch(authOperations.logOut())")}
+          onClick={openModal}
               >
         {<img src={exitIcon} alt="" width="32" className={s.logoutIcon} />}
-          {matches && <div>Выйти</div>}
-        </button>
+          {matches && <div>Logout</div>}
+      </button>
+      {showModal && <Modal onClose={toggleModal} />}
     </div>
   );
 }
