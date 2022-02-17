@@ -18,7 +18,6 @@ export default function MainView() {
         {matches =>
           matches ? (
             <>
-              {/* <Currency /> */}
               <Balance />
               <Table />
             </>

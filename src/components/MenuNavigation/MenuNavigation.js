@@ -1,19 +1,15 @@
 import { NavLink } from 'react-router-dom';
 import Media from 'react-media';
 import sprite from '../../images/sprite.svg';
-import NotFoundView from '../NotFoundView/NotFoundView';
-import Currency from '../Currency';
-import MainView from '../../views/MainView';
-import TableList from '../Statistic/Table/TableList';
 
 export default function MenuNavigation() {
   return (
     <Media query="(max-width: 768px)">
       {matches =>
         matches ? (
-          <nav>
+          <nav className="nav_menu_mob">
             <NavLink
-              to="/dashboard"
+              to="/home"
               className={({ isActive }) => (isActive ? 'active-style' : 'link')}
             >
               <svg width="44" height="44">
@@ -27,7 +23,6 @@ export default function MenuNavigation() {
               <svg width="44" height="44">
                 <use href={`${sprite}#icon-statistics`}></use>
               </svg>
-              {/* <TableList /> */}
             </NavLink>
             <NavLink
               to="/currency"
@@ -36,13 +31,12 @@ export default function MenuNavigation() {
               <svg width="44" height="44">
                 <use href={`${sprite}#icon-currency`}></use>
               </svg>
-              {/* <Currency /> */}
             </NavLink>
           </nav>
         ) : (
-          <nav className="nav_menu">
+          <nav className="nav_menu_tabl">
             <NavLink
-              to="/"
+              to="/home"
               className={({ isActive }) => (isActive ? 'active-style' : 'link')}
             >
               <svg width="24" height="24">

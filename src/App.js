@@ -1,15 +1,15 @@
-import { Routes, Route } from 'react-router';
-import MainView from './views/MainView';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Media from 'react-media';
 import './styles/index.scss';
-import AppBar from './components/AppBar/AppBar';
 
+import AppBar from './components/AppBar/AppBar';
+import MainView from './views/MainView';
 import Currency from './components/Currency';
 import TableList from './components/Statistic/Table/TableList';
 import MenuNavigation from './components/MenuNavigation/MenuNavigation';
 import Container from './components/Container/Container';
-import NotFoundView from './components/NotFoundView/NotFoundView';
-import DashBoard from './components/DashBoard/DashBoard';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+import NotFoundView from './components/NotFoundView/NotFoundView';
 
 function App() {
   // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -18,16 +18,45 @@ function App() {
     <>
       <Container>
         {isLoggedIn && <AppBar />}
-        {/* <DashBoard /> */}
+        {isLoggedIn && <MenuNavigation />}
         <Routes>
           <Route
-            path="/dashboard"
+            path="/home"
             element={
               <PrivateRoute>
-                <DashBoard />
+                <MainView />
               </PrivateRoute>
             }
           />
+          <Route
+            path="/statistics"
+            element={
+              <PrivateRoute>
+                <TableList />
+              </PrivateRoute>
+            }
+          />
+          <Route
+            path="/currency"
+            element={
+              <PrivateRoute>
+                <Media query="(max-width: 768px)">
+                  {matches =>
+                    matches ? (
+                      <>
+                        <Currency />
+                      </>
+                    ) : (
+                      <>
+                        <Navigate replace to="/home" />
+                      </>
+                    )
+                  }
+                </Media>
+              </PrivateRoute>
+            }
+          />
+          <Route path="*" element={<NotFoundView />} />
         </Routes>
       </Container>
     </>

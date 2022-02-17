@@ -2,7 +2,7 @@
   text-decoration: none;
   padding: 12px;
   color: #2a363b;
-  fill: '#6e78e8';
+  fill: #6e78e8;
 }
 
 .active-style {
@@ -10,13 +10,22 @@
   color: #2196f3;
   font-size: 18px;
   font-weight: 500;
+  fill: #4a56e2;
+  transform: scale(1.2);
+}
+
+.link:hover {
+  transform: scale(1.2);
 }
 nav {
   align-items: center;
   text-align: center;
 }
-.nav_menu {
+.nav_menu_tabl {
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+}
+.nav_menu_mob {
+  display: flex;
 }
