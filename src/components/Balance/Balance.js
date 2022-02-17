@@ -12,9 +12,14 @@ export default function Balance() {
   }, [dispatch]);
 
   return (
-    <div className={st.balance__box}>
-      <p className={st.balance__text}>Your balance</p>
-      <p className={st.balance__number}>&#8372;&nbsp;{totalbalance}</p>
+    <div className={st.balance__container}>
+      <div className={st.balance__box}>
+        <p className={st.balance__text}>Your balance</p>
+        <p className={st.balance__number}>
+          &#8372;&nbsp; 25000
+          {/* {totalbalance} */}
+        </p>
+      </div>
     </div>
   );
 }

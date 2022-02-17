@@ -38,7 +38,7 @@ export default function Table() {
         </div>
       </section> */}
       {/* mobile */}
-      {/* <MobileTable /> */}
+      <MobileTable />
     </>
   );
 }
