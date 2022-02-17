@@ -73,8 +73,6 @@ export default function TransactionForm() {
           </p>
 
          </div> 
-
-
             <Field name="category" as="select" hidden>
               <option value="">Choose a category</option>
               <option value="Main">Main</option>
