@@ -1,3 +1,12 @@
+import { createSelector } from 'reselect';
+
 export const getBalance = state => state.finance.totalBalance;
 
 export const getTransactions = state => state.finance.tableTransactions;
+
+export const getFiltredValue = state => state.finance.filter;
+
+export const getVisibleTransatcions = createSelector(
+  [getTransactions, getFiltredValue],
+  (items, filter) => {},
+);
