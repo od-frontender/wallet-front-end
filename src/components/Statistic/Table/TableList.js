@@ -5,6 +5,7 @@ import Table from './Table';
 import CategoryList from '../Category/CategoryList';
 import Balance from '../../Balance/Balance';
 import Currency from '../../Currency';
+import t from './Table.module.scss';
 
 function TableList() {
   const [posts, setPosts] = React.useState([
@@ -15,7 +16,7 @@ function TableList() {
   ]);
   return (
     <>
-      <Media query="(max-width: 768px)">
+      <Media query="(max-width: 767px)">
         {matches =>
           matches ? (
             <>
@@ -26,7 +27,7 @@ function TableList() {
               ))}
             </>
           ) : (
-            <>
+            <section className={t.statistacs}>
               <Currency />
               <Balance />
               <CategoryList />
@@ -34,7 +35,7 @@ function TableList() {
               {posts.map(post => (
                 <Table post={post} key={post.id} />
               ))}
-            </>
+            </section>
           )
         }
       </Media>

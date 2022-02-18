@@ -40,7 +40,7 @@ function App() {
             path="/currency"
             element={
               <PrivateRoute>
-                <Media query="(max-width: 768px)">
+                <Media query="(max-width: 767px)">
                   {matches =>
                     matches ? (
                       <>

@@ -5,7 +5,7 @@ import m from './MenuNavigation.module.scss';
 
 export default function MenuNavigation() {
   return (
-    <Media query="(max-width: 768px)">
+    <Media query="(max-width: 767px)">
       {matches =>
         matches ? (
           <nav className={m.nav_menu_mob}>

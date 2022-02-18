@@ -67,3 +67,12 @@
 .table_tbody_row:not(:last-child) {
   margin-bottom: 23px;
 }
+
+/* ======================= */
+@media (min-width: 768px) {
+  .currency_wrapper {
+    position: absolute;
+    top: -110px;
+    right: 0px;
+  }
+}
