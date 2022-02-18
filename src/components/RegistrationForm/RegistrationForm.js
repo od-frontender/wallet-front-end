@@ -1,11 +1,12 @@
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { authOperations } from '../../redux/auth';
 import s from './RegistrationForm.module.scss';
 import Icons from '../../images/sprite.svg';
 import Logo from '../Logo';
 
 export default function RegistrationForm() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [confirmPassword, setConfirmPassword] = useState('');
@@ -37,13 +38,12 @@ export default function RegistrationForm() {
       alert('Enter the registration data');
       return;
     }
-    // dispatch(
-    //   authAction.userRegister({ email, password, confirmPassword, name }),
-    // );
-    // setEmail('');
-    // setPassword('');
-    // setConfirmPassword('');
-    // setName('');
+    const newUser = { email, password, name };
+    dispatch(authOperations.register(newUser));
+    setName('');
+    setEmail('');
+    setPassword('');
+    setConfirmPassword('');
   };
 
   return (
@@ -86,7 +86,7 @@ export default function RegistrationForm() {
                 className={s.input}
                 placeholder="Confirm password"
                 type="password"
-                name="confirm password"
+                name="confirmPassword"
                 value={confirmPassword}
                 onChange={handleChange}
               />
