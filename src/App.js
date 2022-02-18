@@ -2,7 +2,7 @@ import { Routes, Route, Navigate } from 'react-router-dom';
 import Media from 'react-media';
 import './styles/index.scss';
 
-import AppBar from './components/AppBar/AppBar';
+import AppBar from './components/AppBar';
 import MainView from './views/MainView';
 import Currency from './components/Currency';
 import TableList from './components/Statistic/Table/TableList';
