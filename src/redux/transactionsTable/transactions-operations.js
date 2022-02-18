@@ -1,81 +1,32 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
-import actions from './transactions-actions';
+import * as actions from './transactions-actions';
 
 axios.defaults.baseURL = 'http://localhost:3001/api';
 
-const getTransactions = () => {
-  return axios.get('/transactions').then(response => response.data);
+const getTransactions = async () => {
+  const { data } = await axios.get('/transactions');
+  console.log('data', data);
+  return data;
 };
 
 export const fetchTransactions = createAsyncThunk(
-  actions.fetchTransactions,
-  async (_, { rejectWithValue }) => {
+  'transactions/fetch',
+  async function (_, { rejectWithValue }) {
     try {
-      const transactions = await getTransactions();
-
-      return transactions;
+      const data = await getTransactions();
+      return data;
     } catch (error) {
-      return rejectWithValue(error);
+      return rejectWithValue(error.message);
     }
   },
 );
 
-// const getBalance = () => {
-//   return axios.get('/balance').then(response => response.data);
+// const getTransactions = () => {
+//   return axios
+//     .get('/transactions')
+//     .then(response =>  response.data)
+//     .catch(error => {
+//       throw new Error(error.message);
+//     });
 // };
-// export const fetchBalance = createAsyncThunk(
-//   actions.fetchBalance,
-//   async (_, { rejectWithValue }) => {
-//     try {
-//       const balance = 24000.0;
-//       // await getBalance();
-//       return balance;
-//     } catch (error) {
-//       return rejectWithValue(error);
-//     }
-//   },
-// );
-
-// const data = [
-//   {
-//     id: 1,
-//     data: '04.01.19',
-//     type: '-',
-//     category: 'car',
-//     comment: 'oil',
-//     sum: '1000.00',
-//   },
-//   {
-//     id: 21,
-//     data: '05.01.19',
-//     type: '+',
-//     category: 'products',
-//     comment: 'vegetables',
-//     sum: '250.00',
-//   },
-//   {
-//     id: 23,
-//     data: '09.01.19',
-//     type: '-',
-//     category: 'car',
-//     comment: 'STO',
-//     sum: '2508.00',
-//   },
-//   {
-//     id: 22,
-//     data: '06.01.19',
-//     type: '+',
-//     category: 'products',
-//     comment: 'vegetables',
-//     sum: '250.00',
-//   },
-//   {
-//     id: 239,
-//     data: '06.01.19',
-//     type: '-',
-//     category: 'products',
-//     comment: 'vegetables',
-//     sum: '250.00',
-//   },
-// ];
