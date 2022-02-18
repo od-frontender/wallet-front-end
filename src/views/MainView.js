@@ -14,11 +14,10 @@ export default function MainView() {
 
   return (
     <>
-      <Media query="(max-width: 768px)">
+      <Media query="(max-width: 767px)">
         {matches =>
           matches ? (
             <>
-              {/* <Currency /> */}
               <Balance />
               <Table />
             </>

@@ -1,17 +1,17 @@
 import { NavLink } from 'react-router-dom';
 import Media from 'react-media';
 import sprite from '../../images/sprite.svg';
-import NotFoundView from '../NotFoundView/NotFoundView';
+import m from './MenuNavigation.module.scss';
 
 export default function MenuNavigation() {
   return (
-    <Media query="(max-width: 768px)">
+    <Media query="(max-width: 767px)">
       {matches =>
         matches ? (
-          <nav>
+          <nav className={m.nav_menu_mob}>
             <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? 'active-style' : 'link')}
+              to="/home"
+              className={({ isActive }) => (isActive ? m.active : m.link)}
             >
               <svg width="44" height="44">
                 <use href={`${sprite}#icon-home`}></use>
@@ -19,7 +19,7 @@ export default function MenuNavigation() {
             </NavLink>
             <NavLink
               to="/statistics"
-              className={({ isActive }) => (isActive ? 'active-style' : 'link')}
+              className={({ isActive }) => (isActive ? m.active : m.link)}
             >
               <svg width="44" height="44">
                 <use href={`${sprite}#icon-statistics`}></use>
@@ -27,7 +27,7 @@ export default function MenuNavigation() {
             </NavLink>
             <NavLink
               to="/currency"
-              className={({ isActive }) => (isActive ? 'active-style' : 'link')}
+              className={({ isActive }) => (isActive ? m.active : m.link)}
             >
               <svg width="44" height="44">
                 <use href={`${sprite}#icon-currency`}></use>
@@ -35,10 +35,10 @@ export default function MenuNavigation() {
             </NavLink>
           </nav>
         ) : (
-          <nav className="nav_menu">
+          <nav className={m.nav_menu_tabl}>
             <NavLink
-              to="/"
-              className={({ isActive }) => (isActive ? 'active-style' : 'link')}
+              to="/home"
+              className={({ isActive }) => (isActive ? m.active : m.link)}
             >
               <svg width="24" height="24">
                 <use href={`${sprite}#icon-home`}></use>
@@ -47,15 +47,12 @@ export default function MenuNavigation() {
             </NavLink>
             <NavLink
               to="/statistics"
-              className={({ isActive }) => (isActive ? 'active-style' : 'link')}
+              className={({ isActive }) => (isActive ? m.active : m.link)}
             >
               <svg width="24" height="24">
                 <use href={`${sprite}#icon-statistics`}></use>
               </svg>
               Statistics
-            </NavLink>
-            <NavLink to="/currency">
-              <NotFoundView />
             </NavLink>
           </nav>
         )
