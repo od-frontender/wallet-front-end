@@ -1,55 +1,45 @@
 import { useSelector, useDispatch } from 'react-redux';
-// import Container from '../Container/Container';
+import { useState, React } from 'react';
+
+import { HeaderEl } from './HeaderEl';
 import TableItem from './TableItem';
-const headerArr = [
-  'Data',
-  'Type',
-  'Category',
-  'Comment',
-  'Sum',
-  'Balance',
-  // 'Delete',
-];
+import headerData from './headerData';
+import MobileTable from './MobileTable';
+import s from './styles/Table.module.scss';
 
 export default function Table() {
   const dispatch = useDispatch();
 
+  const [selectedOption, setSelectedOption] = useState({
+    value: '',
+    label: '',
+  });
+  const handleChange = value => {
+    setSelectedOption({ value: value, label: value });
+  };
+
   return (
     <>
-      <section className="table__section">
-        <div className="table__container">
-          <table className="table">
-            <thead className="table__head">
-              <tr className="table__header--row">
-                {headerArr.map(el => {
-                  return (
-                    <th className="table__header" key={el}>
-                      {el}
-                      {/* <select
-                        defaultValue="value1"
-                        name="select"
-                        className="table__buttons"
-                      >
-                        <option value="value1">Значение 1</option>
-                        <option value="value2" selected>
-                          Значение 2
-                        </option>
-                      </select> */}
-                    </th>
-                  );
+      <section className={s.table__section}>
+        <div className={s.table__container}>
+          <table className={s.table}>
+            <thead className={s.table__head}>
+              <tr className={s.table__header}>
+                {headerData.map(({ name, options }) => {
+                  return HeaderEl(name, options, handleChange, selectedOption);
                 })}
-                <th className="table__header">Delete</th>
+                <th className={s.table__header}>Delete</th>
               </tr>
             </thead>
 
-            <tbody className="table__body">
+            <tbody className={s.table__body}>
               <TableItem />
             </tbody>
           </table>
-
-          {/* <table className="table__list"></table> */}
         </div>
       </section>
+
+      {/* <MobileTable /> */}
     </>
   );
 }
