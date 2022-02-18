@@ -1,25 +1,40 @@
-import React, { useContext } from "react";
-import s from "./BtnAddTransaction.module.scss";
-import { ModalContext } from "../Modal/ModalContext";
+import React, { useEffect } from 'react';
+import { createPortal } from 'react-dom';
+import PropTypes from 'prop-types';
 
-const Controls = () => {
-  const { openModal, closeModal } = useContext(ModalContext);
+import s from './BtnAddTransaction.module.scss';
 
-  const handleClick = () => {
-    openModal({
-      title: '',
-      children:
-        <div>
-        <button type="button" className={s.close} onClick={closeModal}></button>
-        </div>
-    });
-  }
+const modalRoot = document.querySelector('#modal-root');
 
-  return (
-    <div className="Controls">
-      <button className={s.btn_transaction} onClick={handleClick}>+</button>
-    </div>
-  )
+export default function BtnAddTransaction({ onClose, children }) {
+  useEffect(() => {
+    const handleKeyDown = e => {
+      const ESC_KEY_CODE = 'Escape';
+      if (e.code === ESC_KEY_CODE) {
+        onClose();
+      }
+    };
+    window.addEventListener('keydown', handleKeyDown);
+    return () => {
+      window.removeEventListener('keydown', handleKeyDown);
+    };
+  }, [onClose]);
+
+  const handleEventOverlay = e => {
+    if (e.currentTarget === e.target) {
+      onClose();
+    }
+  };
+
+  return createPortal(
+    <div className={s.overlay} onClick={handleEventOverlay}>
+      <div className={s.modal}>{children}</div>
+    </div>,
+    modalRoot,
+  );
+}
+
+BtnAddTransaction.propTypes = {
+  onClose: PropTypes.func.isRequired,
+  children: PropTypes.node.isRequired,
 };
-
-export default Controls;

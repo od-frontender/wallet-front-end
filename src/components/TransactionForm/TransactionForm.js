@@ -1,122 +1,233 @@
-import React, {useState} from 'react';
-import s from './TransactionForm.module.scss'; 
-import { Formik, Form, Field, } from 'formik';
+import React, { useState } from 'react';
+import { Formik, Form, Field } from 'formik';
 import * as Yup from 'yup';
-// import Button from '../Button';
+import moment from 'moment';
+import Box from '@material-ui/core/Box';
+import DatePicker from 'react-datepicker';
+import { addMonths } from 'date-fns';
+import { useDispatch } from 'react-redux'; 
+// import authOperations from '../../redux/auth/auth-operations';
+import Button from '../Button';
 import Switch from './Switch';
+import SelectCategory from './SelectCategory';
 
-export default function TransactionForm() {
-   const validationsSchema = Yup.object().shape({
-    typeOfTransaction: Yup.string().required('Type is required'),
-    category: Yup.string(),
-    amount: Yup.number().min(0).required('Amount is required'),
-    date: Yup.date().required('Date is required'),
-    comment: Yup.string()
-   });
-  
-  const [chooseSelect, setSelect] = useState(false);
-  const [category, setCategory] = useState();
+// import { categories } from '../../assets/API/fetchCategory';
 
-  const onSwitchChecked = evt => {
-    setSelect(evt.target.checked);
-    setCategory(null);
+import 'react-datepicker/dist/react-datepicker.css';
+import s from './TransactionForm.module.scss';
+
+export default function TransactionForm({ onClose }) {
+  const dispatch = useDispatch();
+  const [chooseType, setChooseType] = useState(false);
+  const [startDate, setStartDate] = useState(new Date());
+  const [isOpenDate, setIsOpenDate] = useState(false);
+  const [type, setType] = useState('-');
+
+  const handleChangeType = () => {
+    setChooseType(!chooseType);
+    setType('+');
   };
 
+  const handleChangeDate = e => {
+    setIsOpenDate(!isOpenDate);
+    setStartDate(e);
+  };
+
+  // const handleClickDate = e => {
+  //   e.preventDefault();
+  //   setIsOpenDate(!isOpenDate);
+  // };
+
+  const dateMoment = moment(new Date()).format('DD.MM.YYYY');
+
+  const handleClick = e => {
+    if (e.currentTarget === e.target) {
+      onClose();
+    }
+  };
+
+  const handleSubmitForm = (
+    { type, money, category, date, comment },
+    { resetForm },
+  ) => {
+    
+    let currentCategory = {};
+    // if (type === '-') {
+    //   currentCategory = categories.find(i => category === i.name);
+    // } else {
+    //   currentCategory = addIncomes.find(i => category === i.name);
+    // }
+    console.log({
+      type,
+      category: currentCategory,
+      money,
+      date,
+      comment,
+    });
+
+    dispatch(
+      // authOperations.addTransactions({
+      //   type,
+      //   // category: type === '-' ? categoryCosts : categoryIncomes,
+      //   category: currentCategory,
+      //   money,
+      //   date,
+      //   comment,
+      // }),
+    );
+    resetForm();
+    onClose();
+  };
+
+  const validationsSchema = Yup.object().shape({
+    type: Yup.string().required('Type is required'),
+    category: Yup.string('Choose a category').required('Category is required'),
+    money: Yup.number('Enter your amount')
+      .min(0)
+      .required('Amount is required'),
+    date: Yup.string(),
+    comment: Yup.string('Enter your comment').max(
+      12,
+      'No more than 20 characters',
+    ),
+  });
+
   return (
+    <div className={s.modal}>
+      <div className={s.container}>
+        <Formik
+          initialValues={{
+            type: !chooseType ? '-' : '+',
+            category: '',
+            money: '',
+            date: dateMoment,
+            comment: '',
+          }}
+          onSubmit={handleSubmitForm}
+          validationSchema={validationsSchema}
+          enableReinitialize
+        >
+          {({ errors, touched }) => (
+            <Form className={s.form}>
+              <h3 className={s.title}>Add transaction</h3>
 
-    <div className={s.container}>
-    <div className={s.form}>
-    <h3 className={s.title}>Add Transaction</h3>
+              <Switch
+                isChecked={chooseType}
+                onSwitch={handleChangeType}
+                value="type"
+              />
 
-    <Formik
-      initialValues={{
-        typeOfTransaction: 'Expenses',
-        // category: 'Выберите категорию',
-        amount: '',
-        date: '',
-        comment: ''
-      }}
-      //onSubmit={openModal}
-      validationSchema={validationsSchema}
-    >
+              {chooseType ? (
+                <Box className={s.categoryBox}>
+                  <SelectCategory label="category" name="category">
+                    <option className={s.optionSelect} value="">
+                      Choose category
+                    </option>
 
-    {({ errors, touched, isSubmitting }) => (
-      <Form>
-        {/* <div id="my-radio-group"></div>
-          <div role="group" aria-labelledby="my-radio-group">
-            <label>
-              <Field type="radio" name="typeOfTransaction" value="Income" />
-              Income
-            </label>
-            <label>
-              <Field type="radio" name="typeOfTransaction" value="Expenses" />
-              Expenses
-            </label>
-              {errors.typeOfTransaction && touched.typeOfTransaction && (
-                <span className="error">{errors.typeOfTransaction}</span>
+                    {/* {addIncomes.map(category => (
+                      <option
+                        className={styles.optionChoose}
+                        key={category._id}
+                        value={category.name}
+                      >
+                        {category.name}
+                      </option>
+                    ))} */}
+                  </SelectCategory>
+                </Box>
+              ) : (
+                <Box className={s.categoryBox}>
+                  <SelectCategory label="category" name="category">
+                    <option className={s.optionSelect} value="">
+                      Choose category
+                    </option>
+
+                    {/* {categories.map(category => (
+                      <option
+                        className={s.optionChoose}
+                        key={category._id}
+                        value={category.name}
+                      >
+                        {category.name}
+                      </option> */}
+                    ))
+                  </SelectCategory>
+                </Box>
               )}
-          </div> */}
 
+              <div className={s.Credentials}>
+                <div className={s.AmountContainer}>
+                  <Field
+                    name="money"
+                    type="number"
+                    placeholder="0.00"
+                    className={s.amount}
+                  />
+                  {errors.money && touched.money && (
+                    <div className={s.inputFeedback}>{errors.money}</div>
+                  )}
+                </div>
 
-       <div className={s.box}>  
-           <p className={s.text} style={{ color: 'rgba(36, 204, 167, 1)' }}>
-            Income
-          </p> 
+                <Box className={s.dateBox}>
+                  <DatePicker
+                    maxDate={addMonths(new Date(), 0)}
+                    showDisabledMonthNavigation
+                    name="date"
+                    open={false}
+                    className={s.date}
+                    selected={startDate}
+                    onChange={handleChangeDate}
+                    dateFormat="dd.MM.yyyy"
+                  />
 
-            <Switch    
-            onSwitch={chooseSelect => onSwitchChecked(chooseSelect)}
-            isChecked={chooseSelect}
-            onClick={chooseSelect => onSwitchChecked(chooseSelect)}
-          />
-          <p className={s.text} style={{ color: 'rgba(255, 101, 150, 1)' }}>
-            Expenses
-          </p>
+                {/* нужно добавить иконку календаря */}
 
-         </div> 
-            <Field name="category" as="select" hidden>
-              <option value="">Choose a category</option>
-              <option value="Main">Main</option>
-              <option value="Food">Food</option>
-              <option value="Car">Car</option>
-              <option value="Развитие">Развитие</option>
-              <option value="Children">Children</option>
-              <option value="House">House</option>
-              <option value="Education">Education</option>
-              <option value="Other expenses">Other expenses</option>
-            </Field>
-            {errors.category && touched.category &&
-        <span className="input-feedback">
-          {errors.category}
-        </span>}
+                  {/* <button
+                    className={s.BtnIconCalendar}
+                    onClick={handleClickDate}
+                  >
+                    <Calendar svg={s.svgCalendar} />
+                  </button> */}
 
-            <Field name="amount"
-            type="number"
-            placeholder="0.00" />
-            {errors.amount &&
-        touched.amount &&
-        <span className="input-feedback">
-          {errors.amount}
-        </span>}
+                  {isOpenDate && (
+                    <div className={s.datePicker}>
+                      <DatePicker
+                        maxDate={addMonths(new Date(), 0)}
+                        showDisabledMonthNavigation
+                        closeOnScroll={true}
+                        selected={startDate}
+                        onChange={handleChangeDate}
+                        inline
+                      />
+                    </div>
+                  )}
+                </Box>
+              </div>
 
-            <Field
-            name="date"
-            type="date"
-          />
+              <Box className={s.box_select}>
+                <Field
+                  name="comment"
+                  as="textarea"
+                  type="text"
+                  placeholder="Comment"
+                  className={s.comment}
+                />
+                {errors.comment && touched.comment && (
+                  <div className={s.inputFeedback}>{errors.comment}</div>
+                )}
+              </Box>
 
-            <Field name="comment" as="textarea"
-            type="text"
-            placeholder="Comment" />
+              <Button type="submit" contentBtn="Add" button="Button" />
 
-          {/* <Button disabled={isSubmitting} type="submit" contentBtn="Add" />
-          <Button type="submit" contentBtn="Cancel" /> */}
-
-          {/* {isLoading && <LoaderSpinner />} */}
-        </Form>
-      )}
-      </Formik>
-
+              <Button
+                handleClick={handleClick}
+                contentBtn="Cancel"
+                button="ButtonSecondary"
+              />
+            </Form>
+          )}
+        </Formik>
       </div>
     </div>
-
   );
 }

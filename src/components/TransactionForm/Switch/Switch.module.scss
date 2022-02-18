@@ -1,31 +1,63 @@
-.switch_for {
-  cursor: pointer;
-  font-size: 16px;
-  line-height: 1.56;
-  position: relative;
-}
-
-.switch_box {
+.box {
+  margin-bottom: 42px;
   display: flex;
-  background: #e0e0e0;
-  margin-bottom: 50px;
-  width: 100%;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: nowrap;
 }
 
-.switch {
+.switch_for {
+  position: relative;
+  display: inline-block;
+  width: 80px;
+  height: 40px;
+  margin-left: 10px;
+}
+
+.income {
+  margin-right: 24px;
+}
+
+.costs {
+  margin-left: 24px;
+}
+
+.costs,
+.income {
+  font-size: 16px;
+  line-height: 1.5;
+  font-weight: 700;
+  font-family: 'Circe', sans-serif;
+  color: #e0e0e0;
+  transition: all 250ms ease;
+}
+
+.costs.checked {
+  color: #ff6596;
+}
+
+.income.checked {
+  color: #24cca7;
+}
+
+.offColor {
+  color: #24cca7;
+}
+
+.switch_for input[type='checkbox'] {
   display: none;
 }
 
-.switch_for::after {
-  content: '';
-  width: 80px;
-  height: 40px;
-  box-sizing: border-box;
-  border-radius: 30px;
-  border: 1px solid #e0e0e0;
+.switch_for .switch {
   position: absolute;
-  top: 13px;
-  right: -40px;
+  cursor: pointer;
+  border: 1px solid #e0e0e0;
+  border-radius: 25px;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  transition: background-color 0.2s ease;
 }
 
 .switch_for::before {
@@ -33,7 +65,7 @@
   top: 11px;
   background: #ff6596;
   box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
-  content: '';
+  // content: '';
   width: 44px;
   height: 44px;
   border-radius: 50%;
@@ -46,7 +78,7 @@
 }
 
 .switch:checked + .switch_for::before {
-  content: '';
+  // content: '';
   width: 44px;
   height: 44px;
   background: #24cca7;
