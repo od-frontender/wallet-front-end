@@ -18,6 +18,12 @@
   padding-right: 60px;
   background-color: #fff;
 }
+.label_wrapper {
+  width: 100%;
+  margin-bottom: 50px;
+  margin-top: 30px;
+}
+
 .label {
   display: flex;
   position: relative;
@@ -26,9 +32,10 @@
   border-bottom: 1px solid #e0e0e0;
 
   &:not(:last-child) {
-    margin-bottom: 40px;
+    margin-bottom: 30px;
   }
 }
+
 .input {
   width: 100%;
   border: none;

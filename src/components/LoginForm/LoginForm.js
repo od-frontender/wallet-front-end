@@ -39,33 +39,34 @@ export default function LoginForm() {
       <div className={s.form_container}>
         <form onSubmit={handleSubmit} className={s.form} autoComplete="off">
           <Logo />
-          <label className={s.label}>
-            <svg width="20" height="16" className={s.svg}>
-              <use xlinkHref={`${Icons}#icon-emailIcon`} />
-            </svg>
-            <input
-              className={s.input}
-              placeholder="Email"
-              type="email"
-              name="email"
-              value={email}
-              onChange={handleChange}
-            />
-          </label>
-
-          <label className={s.label}>
-            <svg width="20" height="16" className={s.svg}>
-              <use xlinkHref={`${Icons}#icon-passwordIcon`} />
-            </svg>
-            <input
-              className={s.input}
-              placeholder="Password"
-              type="password"
-              name="password"
-              value={password}
-              onChange={handleChange}
-            />
-          </label>
+          <div className={s.label_wrapper}>
+            <label className={s.label}>
+              <svg width="20" height="16" className={s.svg}>
+                <use xlinkHref={`${Icons}#icon-emailIcon`} />
+              </svg>
+              <input
+                className={s.input}
+                placeholder="Email"
+                type="email"
+                name="email"
+                value={email}
+                onChange={handleChange}
+              />
+            </label>
+            <label className={s.label}>
+              <svg width="20" height="16" className={s.svg}>
+                <use xlinkHref={`${Icons}#icon-passwordIcon`} />
+              </svg>
+              <input
+                className={s.input}
+                placeholder="Password"
+                type="password"
+                name="password"
+                value={password}
+                onChange={handleChange}
+              />
+            </label>
+          </div>
 
           <button type="submit" className={s.button}>
             Login
