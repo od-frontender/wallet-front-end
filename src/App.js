@@ -1,7 +1,6 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Media from 'react-media';
 import { lazy, Suspense } from 'react';
-import './styles/index.scss';
 
 import RegisterPage from './pages/RegisterPage/';
 import LoginPage from './pages/LoginPage';
