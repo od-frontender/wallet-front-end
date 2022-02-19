@@ -11,6 +11,9 @@ import PrivateRoute from './components/PrivateRoute/PrivateRoute';
 import NotFoundView from './components/NotFoundView/NotFoundView';
 import Spiner from '../src/components/Spinner';
 
+import BtnIcon from './components/BtnAddTransaction/BtnIcon/BtnIcon';
+import TransactionForm from './components/TransactionForm/TransactionForm';
+
 const MainView = lazy(() =>
   import('./views/MainView' /* webpackChunkName: "MainView" */),
 );
@@ -72,6 +75,8 @@ function App() {
             <Route path="*" element={<NotFoundView />} />
           </Routes>
         </Suspense>
+        <BtnIcon>+</BtnIcon>
+        <TransactionForm></TransactionForm>
       </Container>
     </>
   );
