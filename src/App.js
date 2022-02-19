@@ -1,13 +1,33 @@
-import { Routes, Route } from 'react-router';
-import MainView from './views/MainView';
-import './styles/index.scss';
+import { Routes, Route, Navigate } from 'react-router-dom';
+import Media from 'react-media';
+import { lazy, Suspense } from 'react';
+
+import RegisterPage from './pages/RegisterPage/';
+import LoginPage from './pages/LoginPage';
+
 import AppBar from './components/AppBar';
 
-import Currency from './components/Currency';
-import TableList from './components/Statistic/Table/TableList';
 import MenuNavigation from './components/MenuNavigation/MenuNavigation';
 import Container from './components/Container/Container';
+import PrivateRoute from './components/PrivateRoute/PrivateRoute';
+
 import NotFoundView from './components/NotFoundView/NotFoundView';
+import Spiner from '../src/components/Spinner';
+
+import BtnIcon from './components/BtnAddTransaction/BtnIcon/BtnIcon';
+import TransactionForm from './components/TransactionForm/TransactionForm';
+
+const MainView = lazy(() =>
+  import('./pages/MainView' /* webpackChunkName: "MainView" */),
+);
+const Currency = lazy(() =>
+  import('./components/Currency' /* webpackChunkName: "Currency" */),
+);
+const TableList = lazy(() =>
+  import(
+    './components/Statistic/Table/TableList' /* webpackChunkName: "TableList" */
+  ),
+);
 
 function App() {
   // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
@@ -16,13 +36,52 @@ function App() {
     <>
       <Container>
         {isLoggedIn && <AppBar />}
-        <MenuNavigation />
-        <Routes>
-          <Route path="/" element={<MainView />} />
-          <Route path="/statistics" element={<TableList />} />
-          <Route path="/currency" element={<Currency />} />
-          <Route path="*" element={<NotFoundView />} />
-        </Routes>
+        <RegisterPage />
+        <LoginPage />
+        {isLoggedIn && <MenuNavigation />}
+        <Suspense fallback={<Spiner />}>
+          <Routes>
+            <Route
+              path="/home"
+              element={
+                <PrivateRoute>
+                  <MainView />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/statistics"
+              element={
+                <PrivateRoute>
+                  <TableList />
+                </PrivateRoute>
+              }
+            />
+            <Route
+              path="/currency"
+              element={
+                <PrivateRoute>
+                  <Media query="(max-width: 767px)">
+                    {matches =>
+                      matches ? (
+                        <>
+                          <Currency />
+                        </>
+                      ) : (
+                        <>
+                          <Navigate replace to="/home" />
+                        </>
+                      )
+                    }
+                  </Media>
+                </PrivateRoute>
+              }
+            />
+            <Route path="*" element={<NotFoundView />} />
+          </Routes>
+        </Suspense>
+        <BtnIcon>+</BtnIcon>
+        <TransactionForm></TransactionForm>
       </Container>
     </>
   );
