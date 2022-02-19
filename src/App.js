@@ -15,7 +15,7 @@ import BtnIcon from './components/BtnAddTransaction/BtnIcon/BtnIcon';
 import TransactionForm from './components/TransactionForm/TransactionForm';
 
 const MainView = lazy(() =>
-  import('./views/MainView' /* webpackChunkName: "MainView" */),
+  import('./pages/MainView' /* webpackChunkName: "MainView" */),
 );
 const Currency = lazy(() =>
   import('./components/Currency' /* webpackChunkName: "Currency" */),

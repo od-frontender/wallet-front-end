@@ -8,6 +8,7 @@ import Currency from '../components/Currency';
 
 export default function MainView() {
   const dispatch = useDispatch();
+
   useEffect(() => {
     dispatch(fetchTransactions());
   }, [dispatch]);
@@ -33,11 +34,3 @@ export default function MainView() {
     </>
   );
 }
-
-//    {/* {table.length > 0 ? (
-//         <>
-//           <Table />
-//         </>
-//       ) : (
-//         <p className="section__title">Loading...</p>
-//       )} */}

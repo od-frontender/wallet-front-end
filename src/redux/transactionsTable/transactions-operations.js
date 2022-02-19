@@ -6,7 +6,6 @@ axios.defaults.baseURL = 'http://localhost:3001/api';
 
 const getTransactions = async () => {
   const { data } = await axios.get('/transactions');
-  console.log('data', data);
   return data;
 };
 
