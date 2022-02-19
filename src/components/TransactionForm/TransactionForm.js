@@ -6,7 +6,7 @@ import Box from '@material-ui/core/Box';
 import DatePicker from 'react-datepicker';
 import { addMonths } from 'date-fns';
 import { useDispatch } from 'react-redux'; 
-// import authOperations from '../../redux/auth/auth-operations';
+// import Operations from '../../redux/////'; нужно добавить редакс
 import Button from '../Button';
 import Switch from './Switch';
 import SelectCategory from './SelectCategory';
@@ -33,10 +33,10 @@ export default function TransactionForm({ onClose }) {
     setStartDate(e);
   };
 
-  // const handleClickDate = e => {
-  //   e.preventDefault();
-  //   setIsOpenDate(!isOpenDate);
-  // };
+  const handleClickDate = e => {
+    e.preventDefault();
+    setIsOpenDate(!isOpenDate);
+  };
 
   const dateMoment = moment(new Date()).format('DD.MM.YYYY');
 
@@ -180,10 +180,8 @@ export default function TransactionForm({ onClose }) {
                     dateFormat="dd.MM.yyyy"
                   />
 
-                {/* нужно добавить иконку календаря */}
-
                   {/* <button
-                    className={s.BtnIconCalendar}
+                    className={s.iconCalendar}
                     onClick={handleClickDate}
                   >
                     <Calendar svg={s.svgCalendar} />

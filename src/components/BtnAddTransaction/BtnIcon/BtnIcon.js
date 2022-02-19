@@ -6,7 +6,7 @@ const BtnIcon = ({ type, onClick, children, btnClass, ...allyProps }) => (
   <button
     type={type}
     onClick={onClick}
-    className={s.btnIcon}
+    className={s.btn}
     {...allyProps}
   >
     {children}

@@ -60,36 +60,30 @@
   transition: background-color 0.2s ease;
 }
 
-.switch_for::before {
-  right: -48px;
-  top: 11px;
-  background: #ff6596;
-  box-shadow: 0px 6px 15px rgba(255, 101, 150, 0.5);
-  // content: '';
+.switch_for .switch::before {
+  position: absolute;
+  content: url('../../../images/minus.svg');
+  left: -5px;
+  top: -3px;
   width: 44px;
   height: 44px;
+  background-color: #ff6596;
   border-radius: 50%;
-  position: absolute;
-  z-index: 1;
-  transition-duration: 300ms;
-  background-image: url(https://img.icons8.com/material-outlined/24/ffffff/minus.png);
-  background-repeat: no-repeat;
-  background-position: center;
+  justify-content: center;
+  align-items: center;
+  padding-top: 7px;
+  padding-left: 12px;
+
+  box-shadow: 0px 11px 20px 6px rgba(252, 86, 202, 0.5);
+  transition: all 0.3s ease;
+  transform: translateX(40px);
 }
 
-.switch:checked + .switch_for::before {
-  // content: '';
-  width: 44px;
-  height: 44px;
-  background: #24cca7;
-  box-shadow: 0px 6px 15px rgba(36, 204, 167, 0.5);
-  border-radius: 50%;
-  position: absolute;
-  right: 8px;
-  top: 11px;
-  z-index: 1;
-  transition-duration: 300ms;
-  background-image: url(https://img.icons8.com/android/24/ffffff/plus.png);
-  background-repeat: no-repeat;
-  background-position: center;
+.switch_for input[type='checkbox']:checked + .switch::before {
+  transform: translateX(0);
+  content: url('../../../images/plus.svg');
+  background-color: #24cca7;
+  padding-top: 11px;
+  padding-left: 11px;
+  box-shadow: 0px 11px 20px 6px rgba(47, 231, 201, 0.5);
 }
