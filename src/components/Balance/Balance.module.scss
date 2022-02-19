@@ -1,9 +1,10 @@
 .balance {
+  // &__container {
+  //   margin-left: 40px;
+  // }
   &__box {
-    // display: flex;
-    // flex-direction: column;
-    padding-left: 40px;
     max-width: 350px;
+    padding-left: 40px;
     padding-top: 8px;
     padding-bottom: 13.2px;
     background-color: #b0f3e4;
@@ -13,7 +14,6 @@
     margin: 0 10px 0 0;
     padding: 0;
     font-family: Circe;
-    // font-weight: normal;
     color: #a6a6a6;
     font-size: 12px;
     line-height: 1.5;
@@ -30,10 +30,18 @@
   }
 }
 
-@media screen and(max-width: 767px) {
+@media screen and(min-width: 320px) and(max-width: 767px) {
   .balance {
-    max-width: 280px;
-    padding-left: 30px;
+    &__box {
+      min-width: 280px;
+      padding-right: 75px;
+      padding-left: 30px;
+    }
+
+    &__container {
+      display: flex;
+      justify-content: center;
+    }
   }
 }
 
