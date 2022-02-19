@@ -3,7 +3,11 @@ import Media from 'react-media';
 import { lazy, Suspense } from 'react';
 import './styles/index.scss';
 
+import RegisterPage from './pages/RegisterPage/';
+import LoginPage from './pages/LoginPage';
+
 import AppBar from './components/AppBar';
+
 import MenuNavigation from './components/MenuNavigation/MenuNavigation';
 import Container from './components/Container/Container';
 import PrivateRoute from './components/PrivateRoute/PrivateRoute';
@@ -33,6 +37,8 @@ function App() {
     <>
       <Container>
         {isLoggedIn && <AppBar />}
+        <RegisterPage />
+        <LoginPage />
         {isLoggedIn && <MenuNavigation />}
         <Suspense fallback={<Spiner />}>
           <Routes>

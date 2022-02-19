@@ -1,0 +1,22 @@
+.register_wrapper {
+  display: flex;
+  margin: auto;
+  flex-direction: column;
+  align-items: center;
+  width: 43.75%;
+  padding-top: 153px;
+  padding-bottom: 77px;
+}
+.svg {
+  z-index: 1;
+}
+
+.tittle {
+  text-align: center;
+  margin-top: 32px;
+  font-family: 'Poppins-Regular';
+  font-weight: 400;
+  font-size: 30px;
+  line-height: 45px;
+  z-index: 1;
+}
