@@ -3,9 +3,6 @@ import Media from 'react-media';
 import { lazy, Suspense } from 'react';
 import './styles/index.scss';
 
-import Currency from './components/Currency';
-import TableList from './components/Statistic/Table/TableList';
-
 import RegisterPage from './pages/RegisterPage/';
 import LoginPage from './pages/LoginPage';
 

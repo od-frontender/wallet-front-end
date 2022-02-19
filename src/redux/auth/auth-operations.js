@@ -20,7 +20,7 @@ import {
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-axios.defaults.baseURL = 'http://localhost:3001';
+axios.defaults.baseURL = 'http://localhost:3001/';
 
 const token = {
   set(token) {
@@ -34,7 +34,7 @@ const token = {
 const register = credentials => async dispatch => {
   dispatch(registerRequest());
   try {
-    const response = await axios.post('/api/users/signup', credentials);
+    const response = await axios.post('api/users/signup', credentials);
 
     token.set(response.data.token);
 
