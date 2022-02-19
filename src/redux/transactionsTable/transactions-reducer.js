@@ -9,8 +9,8 @@ const tableTransactions = createReducer([], {
 });
 
 const totalBalance = createReducer('', {
-  [fetchTransactions.fulfilled]: (state, { payload }) =>
-    getUserBalance(payload),
+  // [fetchTransactions.fulfilled]: (state, { payload }) =>
+  //   getUserBalance(payload),
 });
 
 const filter = createReducer('', {
