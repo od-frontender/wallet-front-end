@@ -5,7 +5,7 @@ import s from './AppBar.module.scss';
 export default function AppBar() {
   return (
     <header className={s.header}>
-      {/* <Logo/>  */}
+      <Logo />
       <UserMenu />
     </header>
   );

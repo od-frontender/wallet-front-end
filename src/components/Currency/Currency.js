@@ -29,7 +29,7 @@ export default function Currency() {
       {isLoading ? (
         <Spinner />
       ) : (
-        <div>
+        <div className={s.currency_wrapper}>
           <table className={s.table}>
             <thead className={s.table_label_container}>
               <tr className={s.table_label_row}>
