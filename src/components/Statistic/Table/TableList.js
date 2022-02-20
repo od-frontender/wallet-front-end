@@ -7,11 +7,11 @@ import Balance from '../../Balance/Balance';
 import Currency from '../../Currency';
 
 function TableList() {
-  const [posts, setPosts] = React.useState([
+  const [posts] = React.useState([
     { id: 1, category: 'Auto', sum: 2456 },
-    { id: 1, category: 'Air', sum: 52356 },
-    { id: 1, category: 'Family', sum: 523 },
-    { id: 1, category: 'Kasino', sum: 3234 },
+    { id: 2, category: 'Air', sum: 52356 },
+    { id: 3, category: 'Family', sum: 523 },
+    { id: 4, category: 'Kasino', sum: 3234 }
   ]);
   return (
     <>
@@ -22,7 +22,7 @@ function TableList() {
               <CategoryList />
               <TableItem />
               {posts.map(post => (
-                <Table post={post} key={post.id} />
+                <Table post={post} />
               ))}
             </>
           ) : (

@@ -1,5 +1,5 @@
 import { Routes, Route } from 'react-router';
-import MainView from './views/MainView';
+// import MainView from './views/MainView';
 import './styles/index.scss';
 import AppBar from './components/AppBar/AppBar';
 
@@ -18,7 +18,7 @@ function App() {
         {isLoggedIn && <AppBar />}
         <MenuNavigation />
         <Routes>
-          <Route path="/" element={<MainView />} />
+          {/* <Route path="/" element={<MainView />} /> */}
           <Route path="/statistics" element={<TableList />} />
           <Route path="/currency" element={<Currency />} />
           <Route path="*" element={<NotFoundView />} />

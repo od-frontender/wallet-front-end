@@ -20,6 +20,13 @@
 
 .DivTable {
     width: 385px;
+    padding-top: 15px;
+    padding-bottom: 15px;
+    margin: 0 auto;
+}
+
+.PadCat {
+    margin-left: 20px;
 }
 
 .CvadrCtgr {
@@ -38,17 +45,6 @@
     margin-top: 15px;
 }
 
-.TableCtgr {
-    display: block;
-    padding-top: 15px;
-    padding-bottom: 15px;
-}
-
 .PadCtgr {
     padding-left: 160px;
-}
-
-.TablePad {
-    padding-top: 15px;
-    padding-bottom: 15px;
 }

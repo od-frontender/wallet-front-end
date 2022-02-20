@@ -3,9 +3,9 @@ import Category from './Category';
 // import ButtonYears from './components/Statistic/ButtonYears';
 
 function CategoryList() {
-  const [posts, setPosts] = React.useState([
+  const [posts] = React.useState([
     { id: 1, title: 'Год' },
-    { id: 2, title: 'Месяц' },
+    { id: 2, title: 'Месяц' }
   ]);
   return (
     <div className="">
