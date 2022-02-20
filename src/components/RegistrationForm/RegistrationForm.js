@@ -1,9 +1,11 @@
 import { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { authOperations } from '../../redux/auth';
+import { NavLink } from 'react-router-dom';
 import s from './RegistrationForm.module.scss';
 import Icons from '../../images/sprite.svg';
 import Logo from '../Logo';
+import Button from '../Button';
 
 export default function RegistrationForm() {
   const dispatch = useDispatch();
@@ -105,12 +107,10 @@ export default function RegistrationForm() {
               />
             </label>
           </div>
-
-          <button type="submit" className={s.button}>
-            Registration
-          </button>
-
-          <button className={s.button}>Login</button>
+          <Button type="submit" contentBtn="Registration" classBtn="green" />
+          <NavLink to="/login" className="link">
+            <Button contentBtn="Login" />
+          </NavLink>
         </form>
       </div>
     </>

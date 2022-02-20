@@ -1,10 +1,15 @@
 import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
+import { useDispatch } from 'react-redux';
+import { authOperations } from '../../redux/auth';
+import { NavLink } from 'react-router-dom';
 import s from './LoginForm.module.scss';
 import Icons from '../../images/sprite.svg';
 import Logo from '../Logo';
+import Button from '../Button';
+
 export default function LoginForm() {
-  // const dispatch = useDispatch();
+  const dispatch = useDispatch();
+
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
 
@@ -25,13 +30,11 @@ export default function LoginForm() {
       alert('Enter the registration data');
       return;
     }
-    // dispatch(
-    //   authAction.userRegister({ email, password, confirmPassword, name }),
-    // );
-    // setEmail('');
-    // setPassword('');
-    // setConfirmPassword('');
-    // setName('');
+    const newUser = { email, password };
+    dispatch(authOperations.login(newUser));
+
+    setEmail('');
+    setPassword('');
   };
 
   return (
@@ -67,12 +70,11 @@ export default function LoginForm() {
               />
             </label>
           </div>
+          <Button type="submit" classBtn="green" contentBtn="Login" />
 
-          <button type="submit" className={s.button}>
-            Login
-          </button>
-
-          <button className={s.button}>Registration</button>
+          <NavLink to="/register" className="link">
+            <Button contentBtn="Registration" />
+          </NavLink>
         </form>
       </div>
     </>
