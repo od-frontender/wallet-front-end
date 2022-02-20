@@ -1,5 +1,5 @@
-// import { useDispatch, useSelector } from "react-redux";
-// import { authSelectors, authOperations } from "../../redux/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { authSelectors, authOperations } from "../../redux/auth";
 import exitIcon from "./exit.svg";
 
 import s from "./UserMenu.module.scss";
@@ -11,18 +11,22 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function UserMenu() {
   const [showModal, setshowModal] = useState(false);
-  
+  const dispatch = useDispatch();
   const toggleModal = () => {
     setshowModal(!showModal);
   };
-   const logout = (e) => {
-    if ((e.currentTarget === e.target)) {
-      console.log("dispatch(authOperations.logOut())");
+  const token = useSelector(authSelectors.getToken);
+  console.log(token)
+  const logout = (e) => {
+     if ((e.currentTarget === e.target)) {
+       dispatch(authOperations.logout({token}));
+      // console.log("dispatch(authOperations.logOut())");
         toggleModal();
     }
   };
-    // const name = useSelector(authSelectors.getUsername);
-    const name = "Dima";
+  const name = useSelector(authSelectors.getUserName);
+  console.log(name)
+    // const name = "Dima";
     const matches = useMediaQuery('(min-width:768px)');
 
   return (

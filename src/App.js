@@ -1,6 +1,8 @@
 import { Routes, Route, Navigate } from 'react-router-dom';
+import { useDispatch, useSelector } from "react-redux";
 import Media from 'react-media';
-import { lazy, Suspense } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
+import { authOperations, authSelectors } from "./redux/auth";
 
 import RegisterPage from './pages/RegisterPage/';
 import LoginPage from './pages/LoginPage';
@@ -30,8 +32,15 @@ const TableList = lazy(() =>
 );
 
 function App() {
+  const dispatch = useDispatch();
+ 
+
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, [dispatch]);
+   const isLoggedIn = useSelector(authSelectors.getIsAuthenticated);
   // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const isLoggedIn = true;
+  // const isLoggedIn = true;
   return (
     <>
       <Container>

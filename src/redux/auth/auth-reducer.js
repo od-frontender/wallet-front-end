@@ -26,6 +26,12 @@ const user = createReducer(initialUserState, {
   }),
 });
 
+const name = createReducer(null, {
+  [registerSuccess]: (_, { payload }) => payload.user.mame,
+  [loginSuccess]: (_, { payload }) => payload.user.name,
+  [logoutSuccess]: (_, __) => null,
+  [getCurrentUserError]: (_, __) => null,
+});
 const token = createReducer(null, {
   [registerSuccess]: (_, { payload }) => payload.token,
   [loginSuccess]: (_, { payload }) => payload.token,
@@ -57,4 +63,5 @@ export default combineReducers({
   token,
   isAuthenticated,
   error,
+  name,
 });
