@@ -1,8 +1,7 @@
-import React from 'react';
 const axios = require('axios');
 
 
-axios.defaults.baseURL = 'http://localhost:3001/api';
+axios.defaults.baseURL = 'https://wallet-goit-final-project.herokuapp.com/api';
 
 const getCategories = () => {
     return axios.get('/category').then(response => response.data);

@@ -13,6 +13,7 @@ import {
 import storage from 'redux-persist/lib/storage';
 
 import { authReducer } from './auth';
+import tableReducer from './transactionsTable/transactions-reducer';
 
 const middleware = getDefaultMiddleware({
   serializableCheck: {
@@ -29,6 +30,7 @@ const authPersistConfig = {
 const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
+    finance: tableReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
