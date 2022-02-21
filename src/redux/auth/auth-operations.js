@@ -34,7 +34,7 @@ const token = {
 const register = credentials => async dispatch => {
   dispatch(registerRequest());
   try {
-    const response = await axios.post('api/users/signup', credentials);
+    const response = await axios.post('/api/users/signup', credentials);
 
     token.set(response.data.token);
 
