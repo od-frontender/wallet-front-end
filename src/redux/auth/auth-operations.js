@@ -15,6 +15,9 @@ import {
   getVerifyTokenRepeatRequest,
   getVerifyTokenRepeatSuccess,
   getVerifyTokenRepeatError,
+  avatarRequest,
+  avatarSuccess,
+  avatarError,
 } from './auth-actions.js';
 
 import { toast } from 'react-toastify';
@@ -105,11 +108,26 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
+const updateAvatar = credentials => async dispatch => {
+  dispatch(avatarRequest());
+  try {
+    const response = await axios.post('users/updateAvatar', credentials);
+
+    
+    dispatch(avatarSuccess(response.data));
+    toast.success(`Avatar applied`);
+  } catch (error) {
+    dispatch(avatarError(error.message));
+    toast.error('Something wrong');
+  }
+};
+
 const authOperations = {
   register,
   verifyTokenRepeat,
   login,
   logout,
   getCurrentUser,
+  updateAvatar,
 };
 export default authOperations;
