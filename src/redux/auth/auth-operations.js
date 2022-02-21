@@ -15,6 +15,9 @@ import {
   getVerifyTokenRepeatRequest,
   getVerifyTokenRepeatSuccess,
   getVerifyTokenRepeatError,
+  avatarRequest,
+  avatarSuccess,
+  avatarError,
 } from './auth-actions.js';
 
 import { toast } from 'react-toastify';
@@ -34,7 +37,7 @@ const token = {
 const register = credentials => async dispatch => {
   dispatch(registerRequest());
   try {
-    const response = await axios.post('api/users/signup', credentials);
+    const response = await axios.post('users/signup', credentials);
 
     token.set(response.data.token);
 
@@ -50,7 +53,7 @@ const register = credentials => async dispatch => {
 const verifyTokenRepeat = email => async dispatch => {
   dispatch(getVerifyTokenRepeatRequest());
   try {
-    const response = await axios.post('/api/users/verify', { email });
+    const response = await axios.post('users/verify', { email });
 
     dispatch(getVerifyTokenRepeatSuccess(response.data.message));
     toast.success(`The email has successfully resend`);
@@ -62,7 +65,7 @@ const verifyTokenRepeat = email => async dispatch => {
 const login = credentials => async dispatch => {
   dispatch(loginRequest());
   try {
-    const response = await axios.post('/api/users/login', credentials);
+    const response = await axios.post('users/login', credentials);
 
     token.set(response.data.token);
     dispatch(loginSuccess(response.data));
@@ -77,7 +80,7 @@ const logout = () => async dispatch => {
   dispatch(logoutRequest());
 
   try {
-    await axios.post('/api/users/logout');
+    await axios.post('users/logout');
     token.unset();
     dispatch(logoutSuccess());
   } catch (error) {
@@ -98,10 +101,24 @@ const getCurrentUser = () => async (dispatch, getState) => {
   token.set(storageToken);
   dispatch(getCurrentUserRequest());
   try {
-    const response = await axios.get('/api/users/currentUser');
+    const response = await axios.get('users/currentUser');
     dispatch(getCurrentUserSuccess(response.data));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));
+  }
+};
+
+const updateAvatar = credentials => async dispatch => {
+  dispatch(avatarRequest());
+  try {
+    const response = await axios.post('users/updateAvatar', credentials);
+
+    
+    dispatch(avatarSuccess(response.data));
+    toast.success(`Avatar applied`);
+  } catch (error) {
+    dispatch(avatarError(error.message));
+    toast.error('Something wrong');
   }
 };
 
@@ -111,5 +128,6 @@ const authOperations = {
   login,
   logout,
   getCurrentUser,
+  updateAvatar,
 };
 export default authOperations;

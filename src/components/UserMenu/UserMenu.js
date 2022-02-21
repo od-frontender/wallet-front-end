@@ -1,5 +1,5 @@
-// import { useDispatch, useSelector } from "react-redux";
-// import { authSelectors, authOperations } from "../../redux/auth";
+import { useDispatch, useSelector } from "react-redux";
+import { authSelectors, authOperations } from "../../redux/auth";
 import exitIcon from "./exit.svg";
 
 import s from "./UserMenu.module.scss";
@@ -11,21 +11,62 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 
 export default function UserMenu() {
   const [showModal, setshowModal] = useState(false);
-  
+  const [showModalAv, setshowModalAv] = useState(false);
+  const dispatch = useDispatch();
   const toggleModal = () => {
     setshowModal(!showModal);
   };
-   const logout = (e) => {
+  const toggleModalAv = () => {
+    setshowModalAv(!showModalAv);
+  };
+  const avatar = useSelector(authSelectors.getUserAvatar);
+  // console.log(avatar)
+  const addAvatar = (e) => {
     if ((e.currentTarget === e.target)) {
-      console.log("dispatch(authOperations.logOut())");
+        e.preventDefault();
+      const data = new FormData();
+      const ava = data.append("avatarURL", e.currentTarget.offsetParent.children[0].elements.file.files[0]);
+       dispatch(authOperations.updateAvatar({ava}));
+
+        toggleModalAv();
+    }
+  };
+  const logout = (e) => {
+     if ((e.currentTarget === e.target)) {
+       dispatch(authOperations.logout());
+      
         toggleModal();
     }
   };
-    // const name = useSelector(authSelectors.getUsername);
-    const name = "Dima";
+  const name = useSelector(authSelectors.getUserName);
+  console.log(name)
+    
     const matches = useMediaQuery('(min-width:768px)');
 
   return (
+    <> 
+      <div className={s.buttonAvaContainer}>
+       <button
+         type="button"
+          className={s.buttonAvaChange}
+          onClick={toggleModalAv}
+              >
+        {<img src={avatar} alt=""  className={s.avatar} />}
+         
+        </button>
+        </div>
+      {showModalAv && <Modal onClose={toggleModalAv} children={ 
+          <form id="form" action="" encType="multipart/form-data" className={s.formAv}>
+          <input name="file" type="file" className={s.inputAv} />
+          <div className={s.buttonAv}>
+            <button type="submit" className={s.buttonLogoutYN} onClick={addAvatar}>Apply</button>
+          <button
+              type="button"
+              className={s.buttonLogoutYN}
+              onClick={toggleModalAv}>Cencel
+            </button></div>
+    </form>
+      } />}
     <div className={s.container}>
       
       <span className={s.name}> {name}</span>
@@ -55,6 +96,7 @@ export default function UserMenu() {
             </button>
         </div>
         </div>} />}
-    </div>
+      </div>
+      </>
   );
 }

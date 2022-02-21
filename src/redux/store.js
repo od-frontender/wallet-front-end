@@ -1,11 +1,12 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
 import logger from 'redux-logger';
 import tableReducer from './transactionsTable/transactions-reducer';
-//logger
+import { authReducer } from "./auth";
 const midleware = [...getDefaultMiddleware(), logger];
 
 const store = configureStore({
   reducer: {
+    auth: authReducer,
     finance: tableReducer,
   },
 
