@@ -17,6 +17,8 @@ import Spiner from '../src/components/Spinner';
 import BtnIcon from './components/BtnAddTransaction/BtnIcon/BtnIcon';
 import TransactionForm from './components/TransactionForm/TransactionForm';
 
+import StatisticsDiagram from './components/StatisticsDiagram/StatisticsDiagram';
+
 const MainView = lazy(() =>
   import('./pages/MainView' /* webpackChunkName: "MainView" */),
 );
@@ -36,6 +38,7 @@ function App() {
     <>
       <Container>
         {isLoggedIn && <AppBar />}
+        <StatisticsDiagram />
         <RegisterPage />
         <LoginPage />
         {isLoggedIn && <MenuNavigation />}
