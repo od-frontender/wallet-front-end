@@ -18,7 +18,7 @@ export default function MenuNavigation() {
               </svg>
             </NavLink>
             <NavLink
-              to="/statistics"
+              to="/dashboard/statistics"
               className={({ isActive }) => (isActive ? m.active : m.link)}
             >
               <svg width="44" height="44">
@@ -26,7 +26,7 @@ export default function MenuNavigation() {
               </svg>
             </NavLink>
             <NavLink
-              to="/currency"
+              to="/dashboard/currency"
               className={({ isActive }) => (isActive ? m.active : m.link)}
             >
               <svg width="44" height="44">
@@ -46,7 +46,7 @@ export default function MenuNavigation() {
               Home
             </NavLink>
             <NavLink
-              to="/statistics"
+              to="/dashboard/statistics"
               className={({ isActive }) => (isActive ? m.active : m.link)}
             >
               <svg width="24" height="24">

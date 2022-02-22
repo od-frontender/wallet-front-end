@@ -1,12 +1,13 @@
-import { useEffect } from 'react';
+import { useEffect, lazy, Suspense } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { authOperations } from './redux/auth';
 import { authSelectors } from './redux/auth';
-import PrivateRouter from './components/PrivateRouter';
+import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
 import LoginPage from './pages/LoginPage';
-import RegisterPage from './pages/RegisterPage';
+import RegistrationPage from './pages/RegistrationPage';
 import DashboardPage from './pages/DashboardPage';
+import Spinner from './components/Spinner';
 
 function App() {
   const dispatch = useDispatch();
@@ -17,31 +18,31 @@ function App() {
   }, [dispatch]);
 
   return (
-    <Routes>
-      <Route>
-        <Route exact="true" path="/" element={<Navigate to="/dashboard" />} />
+    <Suspense fallback={<Spinner />}>
+      <Routes>
         <Route
-          exact="true"
+          path="/"
+          element={
+            isToken ? <Navigate to="/dashboard" /> : <Navigate to="/login" />
+          }
+        />
+        <Route
+          path="/register"
+          element={
+            isToken ? <Navigate to="/dashboard" /> : <RegistrationPage />
+          }
+        />
+        <Route
           path="/login"
           element={isToken ? <Navigate to="/dashboard" /> : <LoginPage />}
         />
         <Route
-          exact="true"
-          path="/register"
-          redirectTo="/dashboard"
-          element={<RegisterPage />}
+          path="/dashboard/*"
+          element={isToken ? <DashboardPage /> : <Navigate to="/login" />}
         />
-        <Route
-          exact="true"
-          path="dashboard/*"
-          element={
-            <PrivateRouter redirectTo="/login">
-              <DashboardPage />
-            </PrivateRouter>
-          }
-        ></Route>
-      </Route>
-    </Routes>
+        <Route path="*" element={<NotFoundPage />} />
+      </Routes>
+    </Suspense>
   );
 }
 
