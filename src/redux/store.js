@@ -1,5 +1,4 @@
 import { configureStore, getDefaultMiddleware } from '@reduxjs/toolkit';
-
 import {
   persistStore,
   persistReducer,
@@ -11,8 +10,8 @@ import {
   REGISTER,
 } from 'redux-persist';
 import storage from 'redux-persist/lib/storage';
-
-import { authReducer } from './auth';
+import statisticsReducer from './statistics/statistics-reducer';
+import authReducer from './auth/auth-reducer';
 import tableReducer from './transactionsTable/transactions-reducer';
 
 const middleware = getDefaultMiddleware({
@@ -31,6 +30,7 @@ const store = configureStore({
   reducer: {
     auth: persistReducer(authPersistConfig, authReducer),
     finance: tableReducer,
+    statistics: statisticsReducer,
   },
   middleware,
   devTools: process.env.NODE_ENV === 'development',
