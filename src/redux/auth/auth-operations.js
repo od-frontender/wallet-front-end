@@ -15,6 +15,9 @@ import {
   getVerifyTokenRepeatRequest,
   getVerifyTokenRepeatSuccess,
   getVerifyTokenRepeatError,
+  avatarRequest,
+  avatarSuccess,
+  avatarError,
 } from './auth-actions.js';
 
 import { toast } from 'react-toastify';
@@ -35,7 +38,6 @@ const register = credentials => async dispatch => {
   dispatch(registerRequest());
   try {
     const response = await axios.post('/users/signup', credentials);
-
     token.set(response.data.token);
 
     dispatch(registerSuccess(response.data));
@@ -50,7 +52,9 @@ const register = credentials => async dispatch => {
 const verifyTokenRepeat = email => async dispatch => {
   dispatch(getVerifyTokenRepeatRequest());
   try {
+
     const response = await axios.post('/users/verify', { email });
+
 
     dispatch(getVerifyTokenRepeatSuccess(response.data.message));
     toast.success(`The email has successfully resend`);
@@ -63,7 +67,6 @@ const login = credentials => async dispatch => {
   dispatch(loginRequest());
   try {
     const response = await axios.post('/users/login', credentials);
-
     token.set(response.data.token);
     dispatch(loginSuccess(response.data));
     toast.success(`Welcome to Wallet`);
@@ -105,11 +108,24 @@ const getCurrentUser = () => async (dispatch, getState) => {
   }
 };
 
+const updateAvatar = credentials => async dispatch => {
+  dispatch(avatarRequest());
+  try {
+    const response = await axios.post('/users/updateAvatar', credentials);
+    dispatch(avatarSuccess(response.data));
+    toast.success(`Avatar applied`);
+  } catch (error) {
+    dispatch(avatarError(error.message));
+    toast.error('Something wrong');
+  }
+};
+
 const authOperations = {
   register,
   verifyTokenRepeat,
   login,
   logout,
   getCurrentUser,
+  updateAvatar,
 };
 export default authOperations;

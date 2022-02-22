@@ -37,3 +37,7 @@ export const getVerifyTokenRepeatSuccess = createAction(
 export const getVerifyTokenRepeatError = createAction(
   'auth/getVerifyTokenRepeatError',
 );
+
+export const avatarRequest = createAction('auth/avatarRequest');
+export const avatarSuccess = createAction('auth/avatarSuccess');
+export const avatarError = createAction('auth/avatarError');

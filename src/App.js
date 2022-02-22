@@ -21,6 +21,13 @@ function App() {
     dispatch(authOperations.getCurrentUser());
   }, [dispatch]);
 
+function App() {
+  const dispatch = useDispatch();
+  const isToken = useSelector(authSelectors.getToken);
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, [dispatch]);
+  
   return (
     <Routes>
       <Route>

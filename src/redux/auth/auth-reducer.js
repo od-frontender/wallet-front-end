@@ -10,6 +10,7 @@ import {
   getCurrentUserSuccess,
   getCurrentUserError,
   getCurrentUserAvatarSuccess,
+
 } from './auth-actions';
 
 const initialUserState = { name: null, email: null };
@@ -37,7 +38,19 @@ const user = createReducer(initialUserState, {
     avatar: avatarUrl,
   }),
 });
-
+const avatar = createReducer(null, {
+  [registerSuccess]: (_, { payload }) => payload.avatarURL,
+  [loginSuccess]: (_, { payload }) => payload.avatarURL,
+  [avatarSuccess]: (_, { payload }) => payload.avatarURL,
+  [logoutSuccess]: (_, __) => null,
+  [getCurrentUserError]: (_, __) => null,
+});
+const name = createReducer(null, {
+  [registerSuccess]: (_, { payload }) => payload.user.mame,
+  [loginSuccess]: (_, { payload }) => payload.user.name,
+  [logoutSuccess]: (_, __) => null,
+  [getCurrentUserError]: (_, __) => null,
+});
 const token = createReducer(null, {
   [registerSuccess]: (_, { payload }) => payload.token,
   [loginSuccess]: (_, { payload }) => payload.token,
@@ -69,4 +82,6 @@ export default combineReducers({
   token,
   isAuthenticated,
   error,
+  name,
+  avatar,
 });
