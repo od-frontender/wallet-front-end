@@ -1,29 +1,11 @@
 .loginPage_wrapper {
-  position: relative;
   display: flex;
-  background-color: #e7eaf2;
+  height: 100%;
+}
 
-  &::before {
-    position: absolute;
-    content: '';
-    background-image: url('../../images/Ellipse1.svg');
-    left: 0;
-    bottom: 0;
-    width: 512px;
-    height: 424px;
-    background-repeat: no-repeat;
-    background-size: 513px 547px;
-  }
-  &::after {
-    position: absolute;
-    content: '';
-    background-image: url('../../images/Ellipse2.svg');
-    backdrop-filter: blur(50px);
-    right: 0;
-    top: 0;
-    width: 564px;
-    height: 547px;
-    background-repeat: no-repeat;
-    background-size: 100%;
-  }
+.loginPage_image {
+  width: 43.75%;
+}
+.loginPage_form {
+  width: 56.25%;
 }
