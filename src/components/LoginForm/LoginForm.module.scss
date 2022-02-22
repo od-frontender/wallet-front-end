@@ -1,49 +1,83 @@
 .form_container {
-  width: 100%;
-  height: 100%;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  // width: 100%;
+  // height: 100%;
+  // display: flex;
+  // justify-content: center;
+  // align-items: center;
+  width: 320px;
+  margin: 0 auto;
 }
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
   margin: auto;
-  width: 540px;
-  border-radius: 20px;
-  padding-top: 40px;
-  padding-bottom: 60px;
-  padding-left: 60px;
-  padding-right: 60px;
+  width: 100%;
+  padding-top: 110px;
+  padding-bottom: 110px;
+  padding-left: 20px;
+  padding-right: 20px;
   background-color: #fff;
-}
-.label_wrapper {
-  width: 100%;
-  margin-bottom: 50px;
-  margin-top: 30px;
-}
-.label {
-  display: flex;
-  position: relative;
-  align-items: center;
-  width: 100%;
-  border-bottom: 1px solid #e0e0e0;
-  &:not(:last-child) {
+
+  .label_wrapper {
+    display: flex;
+    flex-direction: column;
+    margin-top: 35px;
     margin-bottom: 40px;
   }
+  .label {
+    display: flex;
+    position: relative;
+    align-items: center;
+    width: 100%;
+    border-bottom: 1px solid #e0e0e0;
+    &:not(:last-child) {
+      margin-bottom: 40px;
+    }
+  }
+  .input {
+    width: 100%;
+    border: none;
+    padding: 13px;
+    font-family: 'Circe-Regular';
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 26.53px;
+    padding-left: 54.5px;
+  }
+  .svg {
+    position: absolute;
+    left: 12.5px;
+  }
 }
-.input {
-  width: 100%;
-  border: none;
-  padding: 13px;
-  font-family: 'Circe-Regular';
-  font-weight: 400;
-  font-size: 18px;
-  line-height: 26.53px;
-  padding-left: 54.5px;
+@media (min-width: 768px) {
+  .form_container {
+    width: 100%;
+    padding: 0;
+    z-index: 1;
+    margin-top: 50px;
+  }
+  .form {
+    width: 540px;
+    border-radius: 20px;
+    padding-top: 40px;
+    padding-bottom: 60px;
+    padding-left: 60px;
+    padding-right: 60px;
+  }
+  .label_wrapper {
+    width: 100%;
+    margin-bottom: 50px;
+    margin-top: 30px;
+  }
 }
-.svg {
-  position: absolute;
-  left: 12.5px;
+
+@media (min-width: 1280px) {
+  .form_container {
+    width: 56.25%;
+    margin-top: 0;
+    padding-top: 136px;
+    padding-bottom: 116px;
+    background-color: rgba(255, 255, 255, 0.4);
+  }
 }

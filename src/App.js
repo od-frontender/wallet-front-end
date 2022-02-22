@@ -23,7 +23,6 @@ const NotFoundPage = lazy(() =>
 function App() {
   const dispatch = useDispatch();
   const isToken = useSelector(authSelectors.getToken);
-
   useEffect(() => {
     dispatch(authOperations.getCurrentUser());
   }, [dispatch]);
