@@ -1,92 +1,48 @@
-import { Routes, Route, Navigate } from 'react-router-dom';
-import Media from 'react-media';
-import { lazy, Suspense } from 'react';
-
-import RegisterPage from './pages/RegisterPage/';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
+import { Route, Routes, Navigate } from 'react-router-dom';
+import { authOperations } from './redux/auth';
+import { authSelectors } from './redux/auth';
+import PrivateRouter from './components/PrivateRouter';
 import LoginPage from './pages/LoginPage';
-
-import AppBar from './components/AppBar';
-
-import MenuNavigation from './components/MenuNavigation/MenuNavigation';
-import Container from './components/Container/Container';
-import PrivateRoute from './components/PrivateRoute/PrivateRoute';
-
-import NotFoundView from './components/NotFoundView/NotFoundView';
-import Spiner from '../src/components/Spinner';
-
-import BtnIcon from './components/BtnAddTransaction/BtnIcon/BtnIcon';
-import TransactionForm from './components/TransactionForm/TransactionForm';
-
-import StatisticsDiagram from './components/StatisticsDiagram/StatisticsDiagram';
-
-const MainView = lazy(() =>
-  import('./pages/MainView' /* webpackChunkName: "MainView" */),
-);
-const Currency = lazy(() =>
-  import('./components/Currency' /* webpackChunkName: "Currency" */),
-);
-const TableList = lazy(() =>
-  import(
-    './components/Statistic/Table/TableList' /* webpackChunkName: "TableList" */
-  ),
-);
+import RegisterPage from './pages/RegisterPage';
+import DashboardPage from './pages/DashboardPage';
 
 function App() {
-  // const isLoggedIn = useSelector(authSelectors.getIsLoggedIn);
-  const isLoggedIn = true;
+  const dispatch = useDispatch();
+  const isToken = useSelector(authSelectors.getToken);
+
+  useEffect(() => {
+    dispatch(authOperations.getCurrentUser());
+  }, [dispatch]);
+
   return (
-    <>
-      <Container>
-        {isLoggedIn && <AppBar />}
-        <StatisticsDiagram />
-        <RegisterPage />
-        <LoginPage />
-        {isLoggedIn && <MenuNavigation />}
-        <Suspense fallback={<Spiner />}>
-          <Routes>
-            <Route
-              path="/home"
-              element={
-                <PrivateRoute>
-                  <MainView />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/statistics"
-              element={
-                <PrivateRoute>
-                  <TableList />
-                </PrivateRoute>
-              }
-            />
-            <Route
-              path="/currency"
-              element={
-                <PrivateRoute>
-                  <Media query="(max-width: 767px)">
-                    {matches =>
-                      matches ? (
-                        <>
-                          <Currency />
-                        </>
-                      ) : (
-                        <>
-                          <Navigate replace to="/home" />
-                        </>
-                      )
-                    }
-                  </Media>
-                </PrivateRoute>
-              }
-            />
-            <Route path="*" element={<NotFoundView />} />
-          </Routes>
-        </Suspense>
-        <BtnIcon>+</BtnIcon>
-        <TransactionForm></TransactionForm>
-      </Container>
-    </>
+    <Routes>
+      <Route>
+        <Route exact="true" path="/" element={<Navigate to="/dashboard" />} />
+        <Route
+          exact="true"
+          path="/login"
+          element={isToken ? <Navigate to="/dashboard" /> : <LoginPage />}
+        />
+        <Route
+          exact="true"
+          path="/register"
+          redirectTo="/dashboard"
+          element={<RegisterPage />}
+        />
+        <Route
+          exact="true"
+          path="dashboard/*"
+          element={
+            <PrivateRouter redirectTo="/login">
+              <DashboardPage />
+            </PrivateRouter>
+          }
+        ></Route>
+      </Route>
+    </Routes>
   );
 }
+
 export default App;
