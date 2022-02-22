@@ -1,3 +1,4 @@
+import Container from '../../components/Container/Container';
 import AppBar from '../../components/AppBar';
 import Background from '../../components/Background/Background';
 import Blur from '../../components/Blur/Blur';
@@ -8,7 +9,9 @@ function DashboardPage() {
     <Background>
       <AppBar />
       <Blur>
-        <Main />
+        <Container>
+          <Main />
+        </Container>
       </Blur>
     </Background>
   );

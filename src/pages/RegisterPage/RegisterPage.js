@@ -2,15 +2,15 @@ import React from 'react';
 import RegistrationForm from '../../components/RegistrationForm';
 import Register from '../../components/Register';
 
-import s from './RegistrationPage.module.scss';
+import s from './RegisterPage.module.scss';
 
-const RegistrationPage = () => {
+const RegisterPage = () => {
   return (
-    <div className={s.registrationPage_wrapper}>
+    <div className={s.RegisterPage_wrapper}>
       <Register />
       <RegistrationForm />
     </div>
   );
 };
 
-export default RegistrationPage;
+export default RegisterPage;

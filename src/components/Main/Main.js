@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch } from 'react-redux';
 import { useEffect } from 'react';
 import { Routes, Route, Navigate } from 'react-router-dom';
 import Media from 'react-media';
@@ -7,8 +7,10 @@ import Balance from '../Balance/Balance';
 import { fetchTransactions } from '../../redux/transactionsTable/transactions-operations';
 import Currency from '../Currency';
 import MenuNavigation from '../MenuNavigation/MenuNavigation';
-import StatisticsDiagram from '../StatisticsDiagram/StatisticsDiagram';
+import Statistics from '../Statistics/Statistics';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
+
+import s from './Main.module.scss';
 
 export default function Main() {
   const dispatch = useDispatch();
@@ -34,26 +36,31 @@ export default function Main() {
                     </>
                   }
                 />
-                <Route path="/statistics" element={<StatisticsDiagram />} />
+                <Route path="/statistics" element={<Statistics />} />
                 <Route path="/currency" element={<Currency />} />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
             </>
           ) : (
-            <>
-              <MenuNavigation />
-              <Currency />
-              <Balance />
+            <div className={s.mainPage}>
+              <div className={s.general}>
+                <div className={s.nav_and_balance}>
+                  <MenuNavigation />
+                  <Balance />
+                </div>
+                <Currency />
+              </div>
+              <div className={s.divider}></div>
               <Routes>
                 <Route path="/" element={<Table />} />
-                <Route path="/statistics" element={<StatisticsDiagram />} />
+                <Route path="/statistics" element={<Statistics />} />
                 <Route
                   path="/currency"
                   element={<Navigate to="/dashboard" />}
                 />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
-            </>
+            </div>
           )
         }
       </Media>

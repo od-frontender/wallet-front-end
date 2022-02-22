@@ -3,11 +3,22 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Route, Routes, Navigate } from 'react-router-dom';
 import { authOperations } from './redux/auth';
 import { authSelectors } from './redux/auth';
-import NotFoundPage from './pages/NotFoundPage/NotFoundPage';
-import LoginPage from './pages/LoginPage';
-import RegistrationPage from './pages/RegistrationPage';
-import DashboardPage from './pages/DashboardPage';
 import Spinner from './components/Spinner';
+
+const RegisterPage = lazy(() =>
+  import('./pages/RegisterPage' /* webpackChunkName: 'register-page' */),
+);
+const LoginPage = lazy(() =>
+  import('./pages/LoginPage' /* webpackChunkName: 'login-page' */),
+);
+const DashboardPage = lazy(() =>
+  import('./pages/DashboardPage' /* webpackChunkName: 'dashboard-page' */),
+);
+const NotFoundPage = lazy(() =>
+  import(
+    './pages/NotFoundPage/NotFoundPage' /* webpackChunkName: 'not-found-page' */
+  ),
+);
 
 function App() {
   const dispatch = useDispatch();
@@ -28,9 +39,7 @@ function App() {
         />
         <Route
           path="/register"
-          element={
-            isToken ? <Navigate to="/dashboard" /> : <RegistrationPage />
-          }
+          element={isToken ? <Navigate to="/dashboard" /> : <RegisterPage />}
         />
         <Route
           path="/login"

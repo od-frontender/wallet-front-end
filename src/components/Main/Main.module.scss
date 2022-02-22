@@ -1,0 +1,33 @@
+.mainPage {
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+
+  @media screen and (min-width: 1280px) {
+    flex-direction: row;
+  }
+}
+
+.general {
+  display: flex;
+  justify-content: space-between;
+
+  @media screen and (min-width: 1280px) {
+    flex-direction: column;
+    width: 40%;
+  }
+}
+
+.nav_and_balance {
+  width: 40%;
+}
+
+@media screen and (min-width: 1280px) {
+  .divider {
+    width: 0px;
+    height: 100%;
+    border: 1px solid #e7e5f2;
+    box-shadow: -1px 0px 0px rgba(0, 0, 0, 0.05),
+      1px 0px 0px rgba(255, 255, 255, 0.6);
+  }
+}
