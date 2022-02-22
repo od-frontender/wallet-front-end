@@ -1,10 +1,10 @@
 import { Routes, Route } from 'react-router';
 // import MainView from './views/MainView';
-import './styles/index.scss';
+import './index.css';
 import AppBar from './components/AppBar/AppBar';
 
 import Currency from './components/Currency';
-import TableList from './components/Statistic/Table/TableList';
+import TableList from './components/Statistic/TableList';
 import MenuNavigation from './components/MenuNavigation/MenuNavigation';
 import Container from './components/Container/Container';
 import NotFoundView from './components/NotFoundView/NotFoundView';
