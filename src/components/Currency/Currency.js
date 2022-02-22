@@ -3,7 +3,7 @@ import { useEffect, useState } from 'react';
 import fetchCurrency from '../../assets/API/fetchCurrency';
 import Spinner from '../Spinner';
 
-import s from './Currency.module.css';
+import s from './Currency.module.scss';
 
 export default function Currency() {
   const [currency, setCurrency] = useState([]);

@@ -2,7 +2,7 @@ import { createAsyncThunk } from '@reduxjs/toolkit';
 import axios from 'axios';
 import * as actions from './transactions-actions';
 
-axios.defaults.baseURL = 'http://localhost:3001/api';
+axios.defaults.baseURL = 'https://wallet-goit-final-project.herokuapp.com/api';
 
 const getTransactions = async () => {
   const { data } = await axios.get('/transactions');

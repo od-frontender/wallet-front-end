@@ -9,21 +9,33 @@ import {
   logoutError,
   getCurrentUserSuccess,
   getCurrentUserError,
-  avatarSuccess,
+  getCurrentUserAvatarSuccess,
+
 } from './auth-actions';
 
 const initialUserState = { name: null, email: null };
 
 const user = createReducer(initialUserState, {
   [registerSuccess]: (_, { payload }) => payload.user,
-  [loginSuccess]: (_, { payload: { name, email } }) => ({
+  [loginSuccess]: (_, { payload: { name, email, avatar, avatarId } }) => ({
     name,
     email,
+    avatar,
+    avatarId,
   }),
   [logoutSuccess]: () => initialUserState,
-  [getCurrentUserSuccess]: (_, { payload: { name, email } }) => ({
+  [getCurrentUserSuccess]: (
+    _,
+    { payload: { name, email, avatar, avatarId } },
+  ) => ({
     name,
     email,
+    avatar,
+    avatarId,
+  }),
+  [getCurrentUserAvatarSuccess]: (state, { payload: { avatarUrl } }) => ({
+    ...state,
+    avatar: avatarUrl,
   }),
 });
 const avatar = createReducer(null, {

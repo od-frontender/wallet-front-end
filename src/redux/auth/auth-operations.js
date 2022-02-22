@@ -23,7 +23,7 @@ import {
 import { toast } from 'react-toastify';
 import 'react-toastify/dist/ReactToastify.css';
 
-axios.defaults.baseURL = 'http://localhost:3001/';
+axios.defaults.baseURL = 'https://wallet-goit-final-project.herokuapp.com';
 
 const token = {
   set(token) {
@@ -37,8 +37,7 @@ const token = {
 const register = credentials => async dispatch => {
   dispatch(registerRequest());
   try {
-    const response = await axios.post('users/signup', credentials);
-
+    const response = await axios.post('/users/signup', credentials);
     token.set(response.data.token);
 
     dispatch(registerSuccess(response.data));
@@ -53,7 +52,9 @@ const register = credentials => async dispatch => {
 const verifyTokenRepeat = email => async dispatch => {
   dispatch(getVerifyTokenRepeatRequest());
   try {
-    const response = await axios.post('users/verify', { email });
+
+    const response = await axios.post('/users/verify', { email });
+
 
     dispatch(getVerifyTokenRepeatSuccess(response.data.message));
     toast.success(`The email has successfully resend`);
@@ -65,8 +66,7 @@ const verifyTokenRepeat = email => async dispatch => {
 const login = credentials => async dispatch => {
   dispatch(loginRequest());
   try {
-    const response = await axios.post('users/login', credentials);
-
+    const response = await axios.post('/users/login', credentials);
     token.set(response.data.token);
     dispatch(loginSuccess(response.data));
     toast.success(`Welcome to Wallet`);
@@ -80,7 +80,7 @@ const logout = () => async dispatch => {
   dispatch(logoutRequest());
 
   try {
-    await axios.post('users/logout');
+    await axios.post('/users/logout');
     token.unset();
     dispatch(logoutSuccess());
   } catch (error) {
@@ -101,7 +101,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
   token.set(storageToken);
   dispatch(getCurrentUserRequest());
   try {
-    const response = await axios.get('users/currentUser');
+    const response = await axios.get('/users/currentUser');
     dispatch(getCurrentUserSuccess(response.data));
   } catch (error) {
     dispatch(getCurrentUserError(error.message));
@@ -111,9 +111,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
 const updateAvatar = credentials => async dispatch => {
   dispatch(avatarRequest());
   try {
-    const response = await axios.post('users/updateAvatar', credentials);
-
-    
+    const response = await axios.post('/users/updateAvatar', credentials);
     dispatch(avatarSuccess(response.data));
     toast.success(`Avatar applied`);
   } catch (error) {
