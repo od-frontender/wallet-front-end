@@ -9,8 +9,6 @@ import {
 import { authOperations } from './redux/auth';
 import { authSelectors } from './redux/auth';
 import PrivateRouter from './components/PrivateRouter';
-// import PublicRouter from './components/PublicRouter';
-
 import LoginPage from './pages/LoginPage';
 import RegisterPage from './pages/RegisterPage';
 import DashboardPage from './pages/DashboardPage';
@@ -20,10 +18,7 @@ function App() {
   const isToken = useSelector(authSelectors.getToken);
 
   useEffect(() => {
-    async function getUser() {
-      await dispatch(authOperations.login());
-    }
-    getUser();
+    dispatch(authOperations.getCurrentUser());
   }, [dispatch]);
 
   return (
