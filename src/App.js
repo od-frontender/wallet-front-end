@@ -33,7 +33,11 @@ function App() {
         <Route
           path="/"
           element={
-            isToken ? <Navigate to="/dashboard" /> : <Navigate to="/login" />
+            isToken ? (
+              <Navigate to="/dashboard/home" />
+            ) : (
+              <Navigate to="/login" />
+            )
           }
         />
         <Route
@@ -42,7 +46,7 @@ function App() {
         />
         <Route
           path="/login"
-          element={isToken ? <Navigate to="/dashboard" /> : <LoginPage />}
+          element={isToken ? <Navigate to="/dashboard/home" /> : <LoginPage />}
         />
         <Route
           path="/dashboard/*"

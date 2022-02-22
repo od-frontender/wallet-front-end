@@ -28,7 +28,7 @@ export default function Main() {
               <MenuNavigation />
               <Routes>
                 <Route
-                  path="/"
+                  path="/home"
                   element={
                     <>
                       <Balance />
@@ -52,11 +52,11 @@ export default function Main() {
               </div>
               <div className={s.divider}></div>
               <Routes>
-                <Route path="/" element={<Table />} />
+                <Route path="/home" element={<Table />} />
                 <Route path="/statistics" element={<Statistics />} />
                 <Route
                   path="/currency"
-                  element={<Navigate to="/dashboard" />}
+                  element={<Navigate to="/dashboard/home" />}
                 />
                 <Route path="*" element={<NotFoundPage />} />
               </Routes>
