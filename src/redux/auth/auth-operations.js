@@ -52,9 +52,7 @@ const register = credentials => async dispatch => {
 const verifyTokenRepeat = email => async dispatch => {
   dispatch(getVerifyTokenRepeatRequest());
   try {
-
     const response = await axios.post('/users/verify', { email });
-
 
     dispatch(getVerifyTokenRepeatSuccess(response.data.message));
     toast.success(`The email has successfully resend`);
@@ -80,7 +78,7 @@ const logout = () => async dispatch => {
   dispatch(logoutRequest());
 
   try {
-    await axios.post('/users/logout');
+    await axios.get('/users/logout');
     token.unset();
     dispatch(logoutSuccess());
   } catch (error) {
@@ -111,7 +109,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
 const updateAvatar = credentials => async dispatch => {
   dispatch(avatarRequest());
   try {
-    const response = await axios.post('/users/updateAvatar', credentials);
+    const response = await axios.post('/users/avatars', credentials);
     dispatch(avatarSuccess(response.data));
     toast.success(`Avatar applied`);
   } catch (error) {
