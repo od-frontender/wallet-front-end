@@ -2,7 +2,7 @@ import React from 'react';
 import s from './Table.module.scss';
 
 
-function Table(){
+function TableItem(){
 return(
   
     <div className={s.DivTbl}>
@@ -12,4 +12,4 @@ return(
 )
 }
 
-export default Table;
+export default TableItem;
