@@ -16,6 +16,16 @@ export const getCurrentUserRequest = createAction('auth/getCurrentUserRequest');
 export const getCurrentUserSuccess = createAction('auth/getCurrentUserSuccess');
 export const getCurrentUserError = createAction('auth/getCurrentUserError');
 
+export const getCurrentUserAvatarRequest = createAction(
+  'auth/getCurrentUserAvatarRequest',
+);
+export const getCurrentUserAvatarSuccess = createAction(
+  'auth/getCurrentUserAvatarSuccess',
+);
+export const getCurrentUserAvatarError = createAction(
+  'auth/getCurrentUserAvatarError',
+);
+
 export const getVerifyTokenRepeatRequest = createAction(
   'auth/getVerifyTokenRepeatRequest',
 );
@@ -27,3 +37,7 @@ export const getVerifyTokenRepeatSuccess = createAction(
 export const getVerifyTokenRepeatError = createAction(
   'auth/getVerifyTokenRepeatError',
 );
+
+export const avatarRequest = createAction('auth/avatarRequest');
+export const avatarSuccess = createAction('auth/avatarSuccess');
+export const avatarError = createAction('auth/avatarError');

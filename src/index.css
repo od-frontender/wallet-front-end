@@ -20,6 +20,9 @@ p {
 li {
   list-style-type: none;
 }
+.link {
+  text-decoration: none;
+}
 
 @font-face {
   font-family: 'Circe';

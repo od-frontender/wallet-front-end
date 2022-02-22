@@ -1,28 +1,42 @@
 .table {
   border-radius: 30px;
   display: block;
-  width: 347px;
+  width: 280px;
   text-align: center;
   color: #fff;
   background-color: #4a56e2;
   overflow: hidden;
   border-spacing: 0px;
   overflow: hidden;
-  margin-left: auto;
-  margin-right: auto;
   position: relative;
+
+  &::before {
+    position: absolute;
+    content: '';
+    background-image: url('../../images/vawe.svg');
+    left: 0;
+    bottom: -100px;
+    width: 100%;
+    height: 100%;
+    background-repeat: no-repeat;
+    background-size: 100%;
+
+    @media (min-width: 768px) {
+      bottom: -77px;
+    }
+
+    @media (min-width: 1280px) {
+      bottom: -220px;
+    }
+  }
+  @media (min-width: 768px) {
+    width: 334px;
+  }
+  @media (min-width: 1280px) {
+    width: 348px;
+  }
 }
-.table::before {
-  position: absolute;
-  content: '';
-  background-image: url('../../images/vawe.svg');
-  left: 0;
-  bottom: -220px;
-  width: 100%;
-  height: 100%;
-  background-repeat: no-repeat;
-  background-size: 100%;
-}
+
 .table_label_container {
   display: block;
   font-family: 'Circe';
@@ -40,24 +54,24 @@
     rgba(255, 255, 255, 0) 116.22%
   );
 }
-
 .table_tbody {
   font-family: 'Circe-Regular';
   font-size: 16px;
   line-height: 23.58px;
   display: block;
   border: none;
-  padding-top: 20px;
-  padding-left: 30px;
-  padding-right: 30px;
-  padding-bottom: 149px;
-}
+  padding-top: 10px;
+  padding-bottom: 22px;
+  padding-left: 20px;
+  padding-right: 20px;
 
-@media (min-width: 1280px) {
-  .currency_table {
-    display: block;
-    height: 348px;
-    width: 347px;
+  @media (min-width: 768px) {
+  }
+  @media (min-width: 1280px) {
+    padding-top: 20px;
+    padding-bottom: 149px;
+    padding-left: 30px;
+    padding-right: 30px;
   }
 }
 .table_tbody_row {
@@ -68,11 +82,7 @@
   margin-bottom: 23px;
 }
 
-/* ======================= */
 @media (min-width: 768px) {
-  .currency_wrapper {
-    position: absolute;
-    top: -110px;
-    right: 0px;
-  }
+}
+@media (min-width: 1280px) {
 }

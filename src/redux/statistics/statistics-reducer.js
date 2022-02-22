@@ -1,4 +1,7 @@
+<<<<<<< HEAD
 
+=======
+>>>>>>> dev
 import { createReducer, combineReducers } from '@reduxjs/toolkit';
 import { fetchStatistics } from './statistics-operations';
 
@@ -21,4 +24,8 @@ export default combineReducers({
   entities,
   isLoading,
   error,
+<<<<<<< HEAD
 });
+=======
+});
+>>>>>>> dev

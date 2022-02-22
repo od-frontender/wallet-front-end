@@ -6,7 +6,7 @@ const Login = () => {
   return (
     <>
       <div className={s.login_wrapper}>
-        <svg width="452" height="412" className={s.svg}>
+        <svg className={s.svg}>
           <use xlinkHref={`${Icons}#icon-boy`} />
         </svg>
         <h1 className={s.tittle}>Finance App</h1>

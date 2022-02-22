@@ -8,4 +8,8 @@ export const fetchStatistics = createAsyncThunk(
     const stats = await fetchStatisticsAPI();
     return stats;
   },
+<<<<<<< HEAD
 );
+=======
+);
+>>>>>>> dev
