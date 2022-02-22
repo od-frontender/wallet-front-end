@@ -42,7 +42,7 @@ function App() {
         />
         <Route
           path="/login"
-          element={isToken ? <Navigate to="/dashboard" /> : <LoginPage />}
+          element={isToken ? <Navigate to="/dashboard/home" /> : <LoginPage />}
         />
         <Route
           path="/dashboard/*"
