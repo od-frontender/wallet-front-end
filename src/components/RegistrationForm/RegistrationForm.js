@@ -55,7 +55,7 @@ export default function RegistrationForm() {
           <Logo />
           <div className={s.label_wrapper}>
             <label className={s.label}>
-              <svg width="20" height="16" className={s.svg}>
+              <svg width="24" height="24" className={s.svg}>
                 <use xlinkHref={`${Icons}#icon-emailIcon`} />
               </svg>
               <input
@@ -68,7 +68,7 @@ export default function RegistrationForm() {
               />
             </label>
             <label className={s.label}>
-              <svg width="20" height="16" className={s.svg}>
+              <svg width="24" height="24" className={s.svg}>
                 <use xlinkHref={`${Icons}#icon-passwordIcon`} />
               </svg>
               <input
@@ -81,7 +81,7 @@ export default function RegistrationForm() {
               />
             </label>
             <label className={s.label}>
-              <svg width="20" height="16" className={s.svg}>
+              <svg width="24" height="24" className={s.svg}>
                 <use xlinkHref={`${Icons}#icon-passwordIcon`} />
               </svg>
               <input
@@ -94,7 +94,7 @@ export default function RegistrationForm() {
               />
             </label>
             <label className={s.label}>
-              <svg width="20" height="16" className={s.svg}>
+              <svg width="24" height="24" className={s.svg}>
                 <use xlinkHref={`${Icons}#icon-userIcon`} />
               </svg>
               <input

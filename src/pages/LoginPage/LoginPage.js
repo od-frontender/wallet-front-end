@@ -1,10 +1,10 @@
 import LoginForm from '../../components/LoginForm';
 import Login from '../../components/Login/';
 import Media from 'react-media';
-
-import s from './LoginPage.module.scss';
 import Background from '../../components/Background/Background';
 import Blur from '../../components/Blur/Blur';
+
+import s from './LoginPage.module.scss';
 
 const LoginPage = () => {
   return (
