@@ -33,7 +33,11 @@ function App() {
         <Route
           path="/"
           element={
-            isToken ? <Navigate to="/dashboard" /> : <Navigate to="/login" />
+            isToken ? (
+              <Navigate to="/dashboard/home" />
+            ) : (
+              <Navigate to="/login" />
+            )
           }
         />
         <Route
