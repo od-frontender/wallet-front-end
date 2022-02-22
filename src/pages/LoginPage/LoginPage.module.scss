@@ -1,29 +1,67 @@
-.loginPage_wrapper {
-  position: relative;
-  display: flex;
-  background-color: #e7eaf2;
+@media (min-width: 768px) {
+  .loginPage_wrapper {
+    position: relative;
+    padding-top: 60px;
+    padding-left: 114px;
+    padding-right: 114px;
+    padding-bottom: 196px;
 
-  &::before {
-    position: absolute;
-    content: '';
-    background-image: url('../../images/Ellipse1.svg');
-    left: 0;
-    bottom: 0;
-    width: 512px;
-    height: 424px;
-    background-repeat: no-repeat;
-    background-size: 513px 547px;
+    background-color: #e7eaf2;
+    display: flex;
+    flex-direction: column;
+
+    &::before {
+      position: absolute;
+      content: '';
+      background-image: url('../../images/Ellipse1.svg');
+      left: 0;
+      bottom: 0;
+      width: 512px;
+      height: 424px;
+      background-repeat: no-repeat;
+      background-size: 513px 547px;
+    }
+    &::after {
+      position: absolute;
+      content: '';
+      background-image: url('../../images/Ellipse2.svg');
+      backdrop-filter: blur(50px);
+      right: 0;
+      top: 0;
+      width: 372px;
+      height: 470px;
+      background-repeat: no-repeat;
+      background-size: 470px 440px;
+    }
   }
-  &::after {
-    position: absolute;
-    content: '';
-    background-image: url('../../images/Ellipse2.svg');
-    backdrop-filter: blur(50px);
-    right: 0;
-    top: 0;
-    width: 564px;
-    height: 547px;
-    background-repeat: no-repeat;
-    background-size: 100%;
+}
+@media (min-width: 1280px) {
+  .loginPage_wrapper {
+    flex-direction: row;
+    padding: 0;
+
+    &::before {
+      position: absolute;
+      content: '';
+      background-image: url('../../images/Ellipse1.svg');
+      left: 0;
+      bottom: 0;
+      width: 512px;
+      height: 424px;
+      background-repeat: no-repeat;
+      background-size: 513px 547px;
+    }
+    &::after {
+      position: absolute;
+      content: '';
+      background-image: url('../../images/Ellipse2.svg');
+      backdrop-filter: blur(50px);
+      right: 0;
+      top: 0;
+      width: 564px;
+      height: 547px;
+      background-repeat: no-repeat;
+      background-size: 100%;
+    }
   }
 }
