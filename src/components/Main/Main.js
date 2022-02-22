@@ -9,7 +9,6 @@ import Currency from '../Currency';
 import MenuNavigation from '../MenuNavigation/MenuNavigation';
 import Statistics from '../Statistics/Statistics';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
-import MainView from '../../pages/MainView';
 
 import s from './Main.module.scss';
 
