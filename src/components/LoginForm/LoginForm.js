@@ -57,7 +57,7 @@ export default function LoginForm() {
               />
             </label>
             <label className={s.label}>
-              <svg width="20" height="16" className={s.svg}>
+              <svg width="24" height="24" className={s.svg}>
                 <use xlinkHref={`${Icons}#icon-passwordIcon`} />
               </svg>
               <input

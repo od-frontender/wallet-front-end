@@ -1,11 +1,18 @@
 .loginPage_wrapper {
-  display: flex;
-  height: 100%;
+  height: 100vh;
+
+  @media screen and (min-width: 1280px) {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
 }
 
 .loginPage_image {
   width: 43.75%;
 }
+
 .loginPage_form {
   width: 56.25%;
+  height: 100%;
 }

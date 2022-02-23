@@ -1,18 +1,12 @@
 .form_container {
-  width: 320px;
-  margin: 0 auto;
+  height: 100%;
 }
 .form {
   display: flex;
   flex-direction: column;
   align-items: center;
-  margin: auto;
-  width: 100%;
-  padding-top: 110px;
-  padding-bottom: 110px;
-  padding-left: 20px;
-  padding-right: 20px;
-  background-color: #fff;
+  justify-content: center;
+  height: 100%;
 
   .label_wrapper {
     display: flex;
@@ -45,34 +39,36 @@
     left: 12.5px;
   }
 }
+
 @media (min-width: 768px) {
   .form_container {
-    width: 100%;
-    padding: 0;
-    z-index: 1;
-    margin-top: 50px;
+    display: flex;
+    justify-content: center;
+    margin: 50px 0;
   }
   .form {
-    width: 540px;
     border-radius: 20px;
-    padding-top: 40px;
-    padding-bottom: 60px;
-    padding-left: 60px;
-    padding-right: 60px;
-  }
-  .label_wrapper {
-    width: 100%;
-    margin-bottom: 50px;
-    margin-top: 30px;
+    background: #ffffff;
+    width: 540px;
+    min-height: 616px;
+    padding: 40px 65px 60px;
+
+    .label_wrapper {
+      width: 100%;
+      margin-bottom: 50px;
+      margin-top: 30px;
+    }
   }
 }
 
 @media (min-width: 1280px) {
+  .form {
+    height: auto;
+  }
   .form_container {
-    width: 56.25%;
-    margin-top: 0;
-    padding-top: 136px;
-    padding-bottom: 116px;
-    background-color: rgba(255, 255, 255, 0.4);
+    margin: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }
 }
