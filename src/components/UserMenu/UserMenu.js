@@ -12,6 +12,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 export default function UserMenu() {
   const [showModal, setshowModal] = useState(false);
   const [showModalAv, setshowModalAv] = useState(false);
+  
   const dispatch = useDispatch();
   const toggleModal = () => {
     setshowModal(!showModal);
@@ -19,8 +20,9 @@ export default function UserMenu() {
   const toggleModalAv = () => {
     setshowModalAv(!showModalAv);
   };
+ 
   const avatar = useSelector(authSelectors.getUserAvatar);
-  // console.log(avatar)
+  
   const addAvatar = (e) => {
     if ((e.currentTarget === e.target)) {
         e.preventDefault();
