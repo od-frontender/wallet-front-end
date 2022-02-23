@@ -7,7 +7,7 @@ import s from './Statistics.module.scss';
 
 const Statistics = () => {
   const dispatch = useDispatch();
-  useEffect(() => dispatch(operations.fetchStatistics()), [dispatch]);
+  useEffect(() => dispatch(operations.fetchStatistics('', '')), [dispatch]);
 
   return (
     <div className={s.stat}>

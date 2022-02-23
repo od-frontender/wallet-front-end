@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useRef, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
@@ -9,6 +9,14 @@ const Filters = () => {
   const [month, setMonth] = useState('');
   const [year, setYear] = useState('');
   const dispatch = useDispatch();
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    dispatch(operations.fetchStatistics({ month, year }));
+  }, [dispatch, month, year]);
 
   const months = [
     'January',
@@ -27,11 +35,9 @@ const Filters = () => {
 
   const onChangeMonth = event => {
     setMonth(event.target.value);
-    dispatch(operations.fetchStatistics(month, year));
   };
   const onChangeYear = event => {
     setYear(event.target.value);
-    dispatch(operations.fetchStatistics(month, year));
   };
 
   return (
