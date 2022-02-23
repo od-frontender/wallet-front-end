@@ -109,7 +109,7 @@ const getCurrentUser = () => async (dispatch, getState) => {
 const updateAvatar = credentials => async dispatch => {
   dispatch(avatarRequest());
   try {
-    const response = await axios.post('/users/avatars', credentials);
+    const response = await axios.patch('/users/avatars', credentials);
     dispatch(avatarSuccess(response.data));
     toast.success(`Avatar applied`);
   } catch (error) {

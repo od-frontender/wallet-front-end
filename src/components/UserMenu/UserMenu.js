@@ -24,9 +24,9 @@ export default function UserMenu() {
   const addAvatar = (e) => {
     if ((e.currentTarget === e.target)) {
         e.preventDefault();
-      const data = new FormData();
-      const ava = data.append("avatarURL", e.currentTarget.offsetParent.children[0].elements.file.files[0]);
-       dispatch(authOperations.updateAvatar({ava}));
+      let data = new FormData();
+      data.append("avatar", e.target.form.elements.file.files[0]);
+       dispatch(authOperations.updateAvatar({data}));
 
         toggleModalAv();
     }
@@ -39,7 +39,7 @@ export default function UserMenu() {
     }
   };
   const name = useSelector(authSelectors.getUserName);
-  console.log(name)
+  
     
     const matches = useMediaQuery('(min-width:768px)');
 

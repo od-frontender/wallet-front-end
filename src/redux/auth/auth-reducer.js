@@ -38,9 +38,9 @@ const user = createReducer(initialUserState, {
   }),
 });
 const avatar = createReducer(null, {
-  [registerSuccess]: (_, { payload }) => payload.avatarURL,
-  [loginSuccess]: (_, { payload }) => payload.avatarURL,
-  [getCurrentUserAvatarSuccess]: (_, { payload }) => payload.avatarURL,
+  [registerSuccess]: (_, { payload }) => payload.user.avatarURL,
+  [loginSuccess]: (_, { payload }) => payload.user.avatarURL,
+  [getCurrentUserAvatarSuccess]: (_, { payload }) => payload.user.avatarURL,
   [logoutSuccess]: (_, __) => null,
   [getCurrentUserError]: (_, __) => null,
 });
