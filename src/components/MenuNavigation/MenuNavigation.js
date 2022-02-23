@@ -13,7 +13,7 @@ export default function MenuNavigation() {
               to="/dashboard/home"
               className={({ isActive }) => (isActive ? m.active : m.link)}
             >
-              <svg width="44" height="44">
+              <svg width="38" height="38">
                 <use href={`${sprite}#icon-home`}></use>
               </svg>
             </NavLink>
