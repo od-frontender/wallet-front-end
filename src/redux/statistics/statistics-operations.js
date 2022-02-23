@@ -4,8 +4,8 @@ import { fetchStatisticsAPI } from '../../assets/API/fetchStatistics';
 
 export const fetchStatistics = createAsyncThunk(
   actions.fetchStatistics,
-  async () => {
-    const stats = await fetchStatisticsAPI();
+  async (month, year) => {
+    const stats = await fetchStatisticsAPI(month, year);
     return stats;
   },
 );

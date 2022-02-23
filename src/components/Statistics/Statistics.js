@@ -14,6 +14,8 @@ const Statistics = () => {
       <span className={s.stat_text}>Statistics</span>
       <div className={s.diagram}>
         <Diagram />
+      </div>
+      <div className={s.stat_table}>
         <Filters />
       </div>
     </div>
