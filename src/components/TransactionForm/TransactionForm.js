@@ -5,12 +5,12 @@ import moment from 'moment';
 import Box from '@material-ui/core/Box';
 import DatePicker from 'react-datepicker';
 import { addMonths } from 'date-fns';
-import { useDispatch } from 'react-redux'; 
+import { useDispatch } from 'react-redux';
 // import Operations from '../../redux/////'; нужно добавить редакс
 import Button from '../Button';
 import Switch from './Switch';
 import SelectCategory from './SelectCategory';
-
+import CalendarReact from './Calendar/Calendar';
 // import { categories } from '../../assets/API/fetchCategory';
 
 import 'react-datepicker/dist/react-datepicker.css';
@@ -50,7 +50,6 @@ export default function TransactionForm({ onClose }) {
     { type, money, category, date, comment },
     { resetForm },
   ) => {
-    
     let currentCategory = {};
     // if (type === '-') {
     //   currentCategory = categories.find(i => category === i.name);
@@ -65,16 +64,15 @@ export default function TransactionForm({ onClose }) {
       comment,
     });
 
-    dispatch(
-      // authOperations.addTransactions({
-      //   type,
-      //   // category: type === '-' ? categoryCosts : categoryIncomes,
-      //   category: currentCategory,
-      //   money,
-      //   date,
-      //   comment,
-      // }),
-    );
+    dispatch();
+    // authOperations.addTransactions({
+    //   type,
+    //   // category: type === '-' ? categoryCosts : categoryIncomes,
+    //   category: currentCategory,
+    //   money,
+    //   date,
+    //   comment,
+    // }),
     resetForm();
     onClose();
   };
@@ -141,7 +139,6 @@ export default function TransactionForm({ onClose }) {
                     <option className={s.optionSelect} value="">
                       Choose category
                     </option>
-
                     {/* {categories.map(category => (
                       <option
                         className={s.optionChoose}
@@ -155,21 +152,20 @@ export default function TransactionForm({ onClose }) {
                 </Box>
               )}
 
-              <div className={s.Credentials}>
-                <div className={s.AmountContainer}>
-                  <Field
-                    name="money"
-                    type="number"
-                    placeholder="0.00"
-                    className={s.amount}
-                  />
-                  {errors.money && touched.money && (
-                    <div className={s.inputFeedback}>{errors.money}</div>
-                  )}
-                </div>
+              <Box className={s.mobBox}>
+                <Field
+                  name="money"
+                  type="number"
+                  placeholder="0.00"
+                  className={s.amount}
+                />
+                {errors.money && touched.money && (
+                  <div className={s.inputFeedback}>{errors.money}</div>
+                )}
 
                 <Box className={s.dateBox}>
-                  <DatePicker
+                  <CalendarReact />
+                  {/* <DatePicker
                     maxDate={addMonths(new Date(), 0)}
                     showDisabledMonthNavigation
                     name="date"
@@ -178,7 +174,7 @@ export default function TransactionForm({ onClose }) {
                     selected={startDate}
                     onChange={handleChangeDate}
                     dateFormat="dd.MM.yyyy"
-                  />
+                  /> */}
 
                   {/* <button
                     className={s.iconCalendar}
@@ -187,7 +183,7 @@ export default function TransactionForm({ onClose }) {
                     <Calendar svg={s.svgCalendar} />
                   </button> */}
 
-                  {isOpenDate && (
+                  {/* {isOpenDate && (
                     <div className={s.datePicker}>
                       <DatePicker
                         maxDate={addMonths(new Date(), 0)}
@@ -198,9 +194,9 @@ export default function TransactionForm({ onClose }) {
                         inline
                       />
                     </div>
-                  )}
+                  )} */}
                 </Box>
-              </div>
+              </Box>
 
               <Box className={s.box_select}>
                 <Field
