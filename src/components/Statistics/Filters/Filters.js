@@ -1,161 +1,151 @@
-import React from 'react';
-import { useState } from 'react';
-// import { useDispatch } from 'react-redux';
-// import * as operations from '../../redux/statistics/statistics-operations';
-
-import s from './Filters.module.scss';
+import { useState, useRef, useEffect } from 'react';
+import { useDispatch } from 'react-redux';
+import MenuItem from '@mui/material/MenuItem';
+import FormControl from '@mui/material/FormControl';
+import Select from '@mui/material/Select';
+import * as operations from '../../../redux/statistics/statistics-operations';
 
 const Filters = () => {
-  const [month, setMonth] = useState(null);
-  //   const dispatch = useDispatch();
-  //   useEffect(() => dispatch(operations.fetchStatistics()), [dispatch]);
-  //     const onChooseMonth = () => {
-  //     set
-  // }
+  const [month, setMonth] = useState('');
+  const [year, setYear] = useState('');
+  const dispatch = useDispatch();
+  const isFirstRender = useRef(true);
+  useEffect(() => {
+    if (isFirstRender.current) {
+      isFirstRender.current = false;
+      return;
+    }
+    dispatch(operations.fetchStatistics({ month, year }));
+  }, [dispatch, month, year]);
+
+  const months = [
+    'January',
+    'February',
+    'March',
+    'April',
+    'May',
+    'June',
+    'July',
+    'August',
+    'September',
+    'October',
+    'November',
+    'December',
+  ];
+
+  const onChangeMonth = event => {
+    setMonth(event.target.value);
+  };
+  const onChangeYear = event => {
+    setYear(event.target.value);
+  };
+
   return (
-    <div className={s.form}>
-      <ul className={s.select}>
-        <li>
-          <input
-            className={s.select_close}
-            type="radio"
-            name="month"
-            id="month"
+    <>
+      <FormControl>
+        <Select
+          sx={{
+            width: 280,
+            margin: '0 auto',
+            height: 50,
+            border: '1px solid #000000',
+            borderRadius: '30px',
+            fontFamily: 'Circe',
+            fontSize: '16px',
+            lineHeight: '24px',
+            paddingLeft: '5px',
+          }}
+          value={month}
+          onChange={onChangeMonth}
+          inputProps={{ 'aria-label': 'Without label' }}
+          displayEmpty
+          renderValue={value => {
+            console.log('value :>> ', value);
+            return value !== '' ? months[value] : 'Month';
+          }}
+        >
+          <MenuItem
+            disabled
             value=""
-          />
-          {month ? (
-            <></>
-          ) : (
-            <span className={`${s.select_label} ${s.select_label_placeholder}`}>
-              Month
-            </span>
-          )}
-        </li>
-
-        <li className={s.select_items}>
-          <input
-            className={s.select_expand}
-            type="radio"
-            name="month"
-            id="month-opener"
-          />
-          <label className={s.select_closeLabel} htmlFor="month-close"></label>
-
-          <ul
-            className={s.select_options}
-            onClick={e => setMonth(Number(e.target.id))}
+            sx={{
+              height: 50,
+              borderRadius: '30px',
+              fontFamily: 'Circe',
+              fontSize: '16px',
+              lineHeight: '24px',
+            }}
           >
-            <li className={s.select_option}>
-              <input
-                className={s.select_input}
-                type="radio"
-                name="month"
-                id="0"
-              />
-              <label className={s.select_label} htmlFor="0">
-                ridiculous
-              </label>
-            </li>
+            Month
+          </MenuItem>
+          {months.map((mon, index) => (
+            <MenuItem
+              key={index}
+              value={index}
+              sx={{
+                height: 50,
+                borderRadius: '30px',
+                fontFamily: 'Circe',
+                fontSize: '16px',
+                lineHeight: '24px',
+              }}
+            >
+              {mon}
+            </MenuItem>
+          ))}
+        </Select>
+      </FormControl>
 
-            <li className={s.select_option}>
-              <input
-                className={s.select_input}
-                type="radio"
-                name="month"
-                id="1"
-              />
-              <label className={s.select_label} htmlFor="1">
-                reasonable
-              </label>
-            </li>
-
-            <li className={s.select_option}>
-              <input
-                className={s.select_input}
-                type="radio"
-                name="month"
-                id="2"
-              />
-              <label className={s.select_label} htmlFor="2">
-                lacking
-              </label>
-            </li>
-
-            <li className={s.select_option}>
-              <input
-                className={s.select_input}
-                type="radio"
-                name="month"
-                id="3"
-              />
-              <label className={s.select_label} htmlFor="3">
-                awesomeless
-              </label>
-            </li>
-          </ul>
-
-          <label
-            className={s.select_expandLabel}
-            htmlFor="month-opener"
-          ></label>
-        </li>
-      </ul>
-    </div>
-    // <div className={s.filters}>
-    //   <span className={s.select}>Month</span>
-    //   <ul>
-    //     <li value="0" className={s.option}>
-    //       <label for="jan">January</label>
-    //     </li>
-    //     <li value="1" className={s.option}>
-    //       <label for="feb">February</label>
-    //     </li>
-    //     <li value="2" className={s.option}>
-    //       <label for="mar">March</label>
-    //     </li>
-    //     <li value="3" className={s.option}>
-    //       <label for="apr">April</label>
-    //     </li>
-    //     <li value="4" className={s.option}>
-    //       <label for="feb">May</label>
-    //     </li>
-    //     <li value="5" className={s.option}>
-    //       <label for="feb">June</label>
-    //     </li>
-    //     <li value="6" className={s.option}>
-    //       <label for="feb">July</label>
-    //     </li>
-    //     <li value="7" className={s.option}>
-    //       <label for="feb">August</label>
-    //     </li>
-    //     <li value="8" className={s.option}>
-    //       <label for="feb">September</label>
-    //     </li>
-    //     <li value="9" className={s.option}>
-    //       <label for="feb">October</label>
-    //     </li>
-    //     <li value="10" className={s.option}>
-    //       <label for="feb">November</label>
-    //     </li>
-    //     <li value="11" className={s.option}>
-    //       <label for="feb">December</label>
-    //     </li>
-    //   </ul>
-    //   <summary className={s.radios}>
-    //     <input type="radio" name="month" id="jan" title="0"></input>
-    //     <input type="radio" name="month" id="feb" title="1"></input>
-    //     <input type="radio" name="month" id="mar" title="2"></input>
-    //     <input type="radio" name="month" id="apr" title="3"></input>
-    //     <input type="radio" name="month" id="may" title="4"></input>
-    //     <input type="radio" name="month" id="jun" title="5"></input>
-    //     <input type="radio" name="month" id="jul" title="6"></input>
-    //     <input type="radio" name="month" id="aug" title="7"></input>
-    //     <input type="radio" name="month" id="sep" title="8"></input>
-    //     <input type="radio" name="month" id="oct" title="9"></input>
-    //     <input type="radio" name="month" id="nov" title="10"></input>
-    //     <input type="radio" name="month" id="dec" title="11"></input>
-    //   </summary>
-    // </div>
+      <FormControl>
+        <Select
+          sx={{
+            width: 280,
+            margin: '0 auto',
+            height: 50,
+            border: '1px solid #000000',
+            borderRadius: '30px',
+            fontFamily: 'Circe',
+            fontSize: '16px',
+            lineHeight: '24px',
+            marginTop: '20px',
+            paddingLeft: '5px',
+          }}
+          value={year}
+          onChange={onChangeYear}
+          inputProps={{ 'aria-label': 'Without label' }}
+          displayEmpty
+          renderValue={value => {
+            console.log('value :>> ', value);
+            return value !== '' ? value : 'Year';
+          }}
+        >
+          <MenuItem
+            disabled
+            value=""
+            sx={{
+              height: 50,
+              borderRadius: '30px',
+              fontFamily: 'Circe',
+              fontSize: '16px',
+              lineHeight: '24px',
+            }}
+          >
+            Year
+          </MenuItem>
+          <MenuItem
+            value={2022}
+            sx={{
+              height: 50,
+              borderRadius: '30px',
+              fontFamily: 'Circe',
+              fontSize: '16px',
+              lineHeight: '24px',
+            }}
+          >
+            2022
+          </MenuItem>
+        </Select>
+      </FormControl>
+    </>
   );
 };
 

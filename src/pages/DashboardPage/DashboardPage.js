@@ -4,16 +4,20 @@ import Background from '../../components/Background/Background';
 import Blur from '../../components/Blur/Blur';
 import Main from '../../components/Main';
 
+import s from './DashboardPage.module.scss';
+
 function DashboardPage() {
   return (
-    <Background>
-      <AppBar />
-      <Blur>
-        <Container>
-          <Main />
-        </Container>
-      </Blur>
-    </Background>
+    <div className={s.dashboard}>
+      <Background>
+        <AppBar />
+        <Blur>
+          <Container>
+            <Main />
+          </Container>
+        </Blur>
+      </Background>
+    </div>
   );
 }
 
