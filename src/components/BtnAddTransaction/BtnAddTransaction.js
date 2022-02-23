@@ -1,40 +1,27 @@
-import React, { useEffect } from 'react';
-import { createPortal } from 'react-dom';
-import PropTypes from 'prop-types';
-
+import { useState, useEffect } from 'react';
+// import PropTypes from 'prop-types';
 import s from './BtnAddTransaction.module.scss';
+import Modal from '../ModalContainer';
+import TransactionForm from '../TransactionForm';
+import plus from '../../images/plus.svg';
 
-const modalRoot = document.querySelector('#modal-root');
-
-export default function BtnAddTransaction({ onClose, children }) {
-  useEffect(() => {
-    const handleKeyDown = e => {
-      const ESC_KEY_CODE = 'Escape';
-      if (e.code === ESC_KEY_CODE) {
-        onClose();
-      }
-    };
-    window.addEventListener('keydown', handleKeyDown);
-    return () => {
-      window.removeEventListener('keydown', handleKeyDown);
-    };
-  }, [onClose]);
-
-  const handleEventOverlay = e => {
-    if (e.currentTarget === e.target) {
-      onClose();
-    }
+export default function BtnAddTransaction() {
+  const [showModal, setshowModal] = useState(false);
+  const toggleModal = () => {
+    setshowModal(!showModal);
   };
-
-  return createPortal(
-    <div className={s.overlay} onClick={handleEventOverlay}>
-      <div className={s.modal}>{children}</div>
-    </div>,
-    modalRoot,
+  return (
+    <>
+      <button type="button" onClick={toggleModal} className={s.btn}>
+        <svg width="20" height="20">
+          <use href={`${plus}#icon-untitled`}></use>
+        </svg>
+      </button>
+      {showModal && (
+        <Modal onClose={toggleModal}>
+          <TransactionForm onClose={toggleModal}></TransactionForm>
+        </Modal>
+      )}
+    </>
   );
 }
-
-BtnAddTransaction.propTypes = {
-  onClose: PropTypes.func.isRequired,
-  children: PropTypes.node.isRequired,
-};

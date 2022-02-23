@@ -21,29 +21,20 @@ export default function TableItem() {
   // }, [dispatch]);
   return (
     <>
-      {
-        // transactions.length > 0 ?
-        data.map(({ _id, createdAt, type, category, comment, sum, total }) => {
-          return (
-            <tr key={_id} className={s.table__dataRow}>
-              <td className={s.table__item}>
-                {dateFormat(createdAt, 'mm.dd.yy')}
-              </td>
-              <td className={s.table__item}>{type ? '+' : '-'}</td>
-              <td className={s.table__item}>{category}</td>
-              <td className={s.table__item}>{comment}</td>
-              <td className={type ? income : spending}>{sum}</td>
-              <td className={s.table__item}>{total}</td>
-              <td className={s.table__item}>
-                <button className={btn.button__remove}>
-                  <img className={btn.button__img} src={removeImg} alt="" />
-                </button>
-              </td>
-            </tr>
-          );
-        })
-        // : null
-      }
+      {data.map(({ _id, createdAt, type, category, comment, sum, total }) => {
+        return (
+          <tr key={_id} className={s.table__dataRow}>
+            <td className={s.table__item}>
+              {dateFormat(createdAt, 'mm.dd.yy')}
+            </td>
+            <td className={s.table__item}>{type ? '+' : '-'}</td>
+            <td className={s.table__item}>{category}</td>
+            <td className={s.table__item}>{comment}</td>
+            <td className={type ? income : spending}>{sum}</td>
+            <td className={s.table__item}>{total}</td>
+          </tr>
+        );
+      })}
     </>
   );
 }

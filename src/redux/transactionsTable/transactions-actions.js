@@ -6,6 +6,4 @@ export const getBalance = createAction('transactions/getBalance');
 
 export const filtredTransactions = createAction('transactions/changeFilter');
 
-// const actions = { fetchTransactions, getBalance, filtredTransactions };
-
-// export default actions;
+export const addTransactions = createAction('transactions/add');
