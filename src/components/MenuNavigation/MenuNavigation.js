@@ -10,10 +10,10 @@ export default function MenuNavigation() {
         matches ? (
           <nav className={m.nav_menu_mob}>
             <NavLink
-              to="/dashboard"
+              to="/dashboard/home"
               className={({ isActive }) => (isActive ? m.active : m.link)}
             >
-              <svg width="44" height="44">
+              <svg width="38" height="38">
                 <use href={`${sprite}#icon-home`}></use>
               </svg>
             </NavLink>
@@ -37,10 +37,10 @@ export default function MenuNavigation() {
         ) : (
           <nav className={m.nav_menu_tabl}>
             <NavLink
-              to="/dashboard"
+              to="/dashboard/home"
               className={({ isActive }) => (isActive ? m.active : m.link)}
             >
-              <svg width="24" height="24">
+              <svg width="24" height="24" className={m.svg}>
                 <use href={`${sprite}#icon-home`}></use>
               </svg>
               Home
@@ -49,7 +49,7 @@ export default function MenuNavigation() {
               to="/dashboard/statistics"
               className={({ isActive }) => (isActive ? m.active : m.link)}
             >
-              <svg width="24" height="24">
+              <svg width="24" height="24" className={m.svg}>
                 <use href={`${sprite}#icon-statistics`}></use>
               </svg>
               Statistics

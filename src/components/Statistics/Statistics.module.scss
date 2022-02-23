@@ -25,11 +25,17 @@
 .diagram {
   margin-top: 10px;
   width: 280px;
-  height: 280px;
 
   @media screen and (min-width: 768px) {
     margin-top: 20px;
     width: 320px;
-    height: 320px;
   }
+}
+
+.stat_table {
+  width: 100vw;
+  margin-top: 30px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
 }
