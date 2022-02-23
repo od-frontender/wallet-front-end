@@ -4,7 +4,7 @@ import { nanoid } from 'nanoid';
 import dateFormat from 'dateformat';
 
 import s from './styles/MobileTable.module.scss';
-// import st from '../../styles/index.scss';
+import st from './styles/Table.module.scss';
 import Balance from '../Balance/Balance';
 import { getTransactions } from '../../redux/transactionsTable/transactions-selectors';
 import { fetchTransactions } from '../../redux/transactionsTable/transactions-operations';
@@ -13,8 +13,8 @@ import { fetchTransactions } from '../../redux/transactionsTable/transactions-op
 const forGreenCard = s.table__cardGreen + ' ' + s.table__box;
 const forRedCard = s.table__cardRed + ' ' + s.table__box;
 
-// const income = st.table__income + ' ' + st.table__item;
-// const spending = st.table__spending + ' ' + st.table__item;
+const income = st.table__income + ' ' + st.table__item;
+const spending = st.table__spending + ' ' + st.table__item;
 export default function MobileTable() {
   const transactions = useSelector(getTransactions);
 
@@ -49,16 +49,13 @@ export default function MobileTable() {
                           <p>Comment</p>
                           <p>{comment}</p>
                         </li>
-                        {/* <li key={nanoid()} className={type ? income : spending}>
+                        <li key={nanoid()} className={type ? income : spending}>
                           <p>Sum</p>
                           <p>{sum}</p>
-                        </li> */}
+                        </li>
                         <li key={nanoid()} className={s.table__item}>
                           <p>Balance</p>
                           <p>{total}</p>
-                        </li>
-                        <li key={nanoid()} className={s.table__item}>
-                          <p>Delete</p>
                         </li>
                       </ul>
                     </div>

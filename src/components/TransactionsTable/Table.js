@@ -25,10 +25,9 @@ export default function Table() {
           <table className={s.table}>
             <thead className={s.table__head}>
               <tr className={s.table__header}>
-                {headerData.map(({ name, options }) => {
-                  return HeaderEl(name, options, handleChange, selectedOption);
+                {headerData.map(({ name }) => {
+                  return <th className={s.table__header}>{name}</th>;
                 })}
-                <th className={s.table__header}>Delete</th>
               </tr>
             </thead>
 
@@ -38,8 +37,6 @@ export default function Table() {
           </table>
         </div>
       </section>
-
-      {/* <MobileTable /> */}
     </>
   );
 }

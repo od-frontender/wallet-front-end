@@ -9,6 +9,7 @@ import Currency from '../Currency';
 import MenuNavigation from '../MenuNavigation/MenuNavigation';
 import Statistics from '../Statistics/Statistics';
 import NotFoundPage from '../../pages/NotFoundPage/NotFoundPage';
+import BtnAddTransaction from '../BtnAddTransaction';
 
 import s from './Main.module.scss';
 
@@ -26,6 +27,7 @@ export default function Main() {
           matches ? (
             <>
               <MenuNavigation />
+              <BtnAddTransaction />
               <Routes>
                 <Route
                   path="/home"
@@ -46,6 +48,8 @@ export default function Main() {
               <div className={s.general}>
                 <div className={s.nav_and_balance}>
                   <MenuNavigation />
+                  <BtnAddTransaction />
+
                   <Balance />
                 </div>
                 <Currency />

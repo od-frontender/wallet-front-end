@@ -1,19 +1,14 @@
 import { createAsyncThunk } from '@reduxjs/toolkit';
-import axios from 'axios';
+
+import * as API from './servises';
 import * as actions from './transactions-actions';
 
-axios.defaults.baseURL = 'https://wallet-goit-final-project.herokuapp.com/api';
-
-const getTransactions = async () => {
-  const { data } = await axios.get('/transactions');
-  return data;
-};
-
 export const fetchTransactions = createAsyncThunk(
-  'transactions/fetch',
+  actions.fetchTransactions,
   async function (_, { rejectWithValue }) {
     try {
-      const data = await getTransactions();
+      const data = await API.getTransactions();
+      console.log('fetchTransactions', data);
       return data;
     } catch (error) {
       return rejectWithValue(error.message);
@@ -21,6 +16,24 @@ export const fetchTransactions = createAsyncThunk(
   },
 );
 
+export const addTransactions = createAsyncThunk(
+  actions.addTransactions,
+  async (data, { rejectWithValue }) => {
+    try {
+      console.log('data', data);
+      const transaction = await API.addTransactions(data);
+      //   currentCategory,
+      //   sum,
+      //   comentary,
+      //   type,
+      // );
+
+      return transaction;
+    } catch (error) {
+      return rejectWithValue(error);
+    }
+  },
+);
 // const getTransactions = () => {
 //   return axios
 //     .get('/transactions')
