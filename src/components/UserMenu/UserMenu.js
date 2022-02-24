@@ -27,9 +27,8 @@ export default function UserMenu() {
     if ((e.currentTarget === e.target)) {
         e.preventDefault();
       let data = new FormData();
-      data.append("avatar", e.target.form.elements.file.files[0]);
+      data.append("avatar", e.target.form.elements.file.files[0], e.target.form.elements.file.files[0].name);
        dispatch(authOperations.updateAvatar({data}));
-
         toggleModalAv();
     }
   };
@@ -53,7 +52,7 @@ export default function UserMenu() {
           className={s.buttonAvaChange}
           onClick={toggleModalAv}
               >
-        {<img src={avatar} alt=""  className={s.avatar} />}
+        {<img src={avatar.includes("https") ? avatar : `http://localhost:3001\\${avatar}`} alt=""  className={s.avatar} />}
          
         </button>
         </div>
