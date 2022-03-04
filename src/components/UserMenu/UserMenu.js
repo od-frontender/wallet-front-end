@@ -52,7 +52,7 @@ export default function UserMenu() {
           className={s.buttonAvaChange}
           onClick={toggleModalAv}
               >
-        {<img src={avatar.includes("https") ? avatar : `http://localhost:3001\\${avatar}`} alt=""  className={s.avatar} />}
+        {<img src={avatar.includes("https") ? avatar : `https://wallet-goit-final-project.herokuapp.com\\${avatar}`} alt=""  className={s.avatar} />}
          
         </button>
         </div>
