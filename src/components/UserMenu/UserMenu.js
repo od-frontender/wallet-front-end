@@ -12,6 +12,7 @@ import useMediaQuery from '@mui/material/useMediaQuery';
 export default function UserMenu() {
   const [showModal, setshowModal] = useState(false);
   const [showModalAv, setshowModalAv] = useState(false);
+  
   const dispatch = useDispatch();
   const toggleModal = () => {
     setshowModal(!showModal);
@@ -19,15 +20,15 @@ export default function UserMenu() {
   const toggleModalAv = () => {
     setshowModalAv(!showModalAv);
   };
+ 
   const avatar = useSelector(authSelectors.getUserAvatar);
-  // console.log(avatar)
+  
   const addAvatar = (e) => {
     if ((e.currentTarget === e.target)) {
         e.preventDefault();
       let data = new FormData();
-      data.append("avatar", e.target.form.elements.file.files[0]);
+      data.append("avatar", e.target.form.elements.file.files[0], e.target.form.elements.file.files[0].name);
        dispatch(authOperations.updateAvatar({data}));
-
         toggleModalAv();
     }
   };
@@ -51,7 +52,7 @@ export default function UserMenu() {
           className={s.buttonAvaChange}
           onClick={toggleModalAv}
               >
-        {<img src={avatar} alt=""  className={s.avatar} />}
+        {<img src={avatar.includes("https") ? avatar : `https://wallet-goit-final-project.herokuapp.com\\${avatar}`} alt=""  className={s.avatar} />}
          
         </button>
         </div>

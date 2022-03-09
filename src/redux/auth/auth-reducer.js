@@ -38,15 +38,14 @@ const user = createReducer(initialUserState, {
   }),
 });
 const avatar = createReducer(null, {
-  [registerSuccess]: (_, { payload }) => payload.user.avatarURL,
   [loginSuccess]: (_, { payload }) => payload.user.avatarURL,
-  [getCurrentUserAvatarSuccess]: (_, { payload }) => payload.user.avatarURL,
+   [getCurrentUserSuccess]: (_, { payload }) => payload.user.avatarURL,
   [logoutSuccess]: (_, __) => null,
   [getCurrentUserError]: (_, __) => null,
 });
 const name = createReducer(null, {
-  [registerSuccess]: (_, { payload }) => payload.user.mame,
   [loginSuccess]: (_, { payload }) => payload.user.name,
+  [getCurrentUserSuccess]: (_, { payload }) => payload.user.name,
   [logoutSuccess]: (_, __) => null,
   [getCurrentUserError]: (_, __) => null,
 });
