@@ -60,7 +60,6 @@ const Filters = () => {
           inputProps={{ 'aria-label': 'Without label' }}
           displayEmpty
           renderValue={value => {
-            console.log('value :>> ', value);
             return value !== '' ? months[value] : 'Month';
           }}
         >
@@ -114,7 +113,6 @@ const Filters = () => {
           inputProps={{ 'aria-label': 'Without label' }}
           displayEmpty
           renderValue={value => {
-            console.log('value :>> ', value);
             return value !== '' ? value : 'Year';
           }}
         >

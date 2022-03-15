@@ -12,11 +12,13 @@ const Statistics = () => {
   return (
     <div className={s.stat}>
       <span className={s.stat_text}>Statistics</span>
-      <div className={s.diagram}>
-        <Diagram />
-      </div>
-      <div className={s.stat_table}>
-        <Filters />
+      <div className={s.stat_wrapper}>
+        <div className={s.diagram}>
+          <Diagram />
+        </div>
+        <div className={s.stat_table}>
+          <Filters />
+        </div>
       </div>
     </div>
   );
