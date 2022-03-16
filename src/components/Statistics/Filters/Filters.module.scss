@@ -1,6 +1,27 @@
-.form {
+@media screen and (min-width: 768px) {
+  .filters {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+  }
+}
+
+.filters__years {
+  margin-top: 20px;
+
+  @media screen and (min-width: 768px) {
+    margin-top: 0;
+    // margin-left: 19px;
+  }
+}
+
+.filters__months,
+.filters__years {
   width: 280px;
-  margin: 0 auto;
+
+  @media screen and (min-width: 768px) {
+    width: 48%;
+  }
 }
 
 .select {
