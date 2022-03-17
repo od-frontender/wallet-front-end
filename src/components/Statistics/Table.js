@@ -4,7 +4,6 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { getEntities } from '../../redux/statistics/statistics-selectors';
 import s from './Table.module.scss';
 
-
 ChartJS.register(ArcElement, Tooltip, Legend);
 
  const Table = () => {
