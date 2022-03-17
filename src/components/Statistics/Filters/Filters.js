@@ -3,6 +3,7 @@ import { useDispatch } from 'react-redux';
 import MenuItem from '@mui/material/MenuItem';
 import FormControl from '@mui/material/FormControl';
 import Select from '@mui/material/Select';
+import s from '../Filters/Filters.module.scss'
 import * as operations from '../../../redux/statistics/statistics-operations';
 
 const Filters = () => {
@@ -41,11 +42,11 @@ const Filters = () => {
   };
 
   return (
-    <>
-      <FormControl>
+    <><div className={s.filt_flex}>
+       <FormControl>
         <Select
           sx={{
-            width: 280,
+            width: 200,
             margin: '0 auto',
             height: 50,
             border: '1px solid #000000',
@@ -98,7 +99,7 @@ const Filters = () => {
       <FormControl>
         <Select
           sx={{
-            width: 280,
+            width: 200,
             margin: '0 auto',
             height: 50,
             border: '1px solid #000000',
@@ -106,8 +107,7 @@ const Filters = () => {
             fontFamily: 'Circe',
             fontSize: '16px',
             lineHeight: '24px',
-            marginTop: '20px',
-            paddingLeft: '5px',
+          paddingLeft: '5px',
           }}
           value={year}
           onChange={onChangeYear}
@@ -145,6 +145,8 @@ const Filters = () => {
           </MenuItem>
         </Select>
       </FormControl>
+    </div>
+     
     </>
   );
 };

@@ -4,21 +4,21 @@ import * as actions from './transactions-actions';
 
 axios.defaults.baseURL = 'https://wallet-goit-final-project.herokuapp.com/api';
 
-const getTransactions = async () => {
-  const { data } = await axios.get('/transactions');
-  return data;
+const getTransactions = async() => {
+    const { data } = await axios.get('/transactions');
+    return data;
 };
 
 export const fetchTransactions = createAsyncThunk(
-  'transactions/fetch',
-  async function (_, { rejectWithValue }) {
-    try {
-      const data = await getTransactions();
-      return data;
-    } catch (error) {
-      return rejectWithValue(error.message);
-    }
-  },
+    'transactions/fetch',
+    async function(_, { rejectWithValue }) {
+        try {
+            const data = await getTransactions();
+            return data;
+        } catch (error) {
+            return rejectWithValue(error.message);
+        }
+    },
 );
 
 // const getTransactions = () => {

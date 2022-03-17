@@ -5,20 +5,20 @@ import { filtredTransactions } from './transactions-actions';
 import { fetchTransactions } from './transactions-operations';
 
 const tableTransactions = createReducer([], {
-  [fetchTransactions.fulfilled]: (_, { payload }) => payload,
+    [fetchTransactions.fulfilled]: (_, { payload }) => payload,
 });
 
 const totalBalance = createReducer('', {
-  [fetchTransactions.fulfilled]: (state, { payload }) =>
-    getUserBalance(payload),
+    [fetchTransactions.fulfilled]: (state, { payload }) =>
+        getUserBalance(payload),
 });
 
 const filter = createReducer('', {
-  [filtredTransactions]: (_, { payload }) => payload,
+    [filtredTransactions]: (_, { payload }) => payload,
 });
 
 export default combineReducers({
-  tableTransactions,
-  totalBalance,
-  filter,
+    tableTransactions,
+    totalBalance,
+    filter,
 });
