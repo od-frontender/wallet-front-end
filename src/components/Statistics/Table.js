@@ -4,6 +4,7 @@ import { Chart as ChartJS, ArcElement, Tooltip, Legend } from 'chart.js';
 import { getEntities } from '../../redux/statistics/statistics-selectors';
 import s from './Table.module.scss';
 
+
 ChartJS.register(ArcElement, Tooltip, Legend);
 
  const Table = () => {
@@ -14,17 +15,19 @@ ChartJS.register(ArcElement, Tooltip, Legend);
  
   console.log(categoriesStats)
       return (
-  <li>
-{categoriesStats.map(item => 
-  <><span >{item.category}</span>
-  <span className={s.PadCtgr}>{item.total}</span>
-  <hr/></>
-   
-)
+        <><div className={s.DivTbl}>
+          <span className={s.PadTbl}>Категория</span>
+          <span className={s.PadTable}>Сумма</span>
+        </div>
+<li className={s.TableItem}>
+          {categoriesStats.map(item => <><span className={s.FontCtgr}>{item.category}</span>
+            <span className={s.PadCtgr}> <p className={s.FontCtgr}>{item.total}</p></span><hr className={s.LineTbl} /></>
 
- }
+            )}
 
-  </li>
+          </li></>
+        
+        
     );
 };
 export default Table;

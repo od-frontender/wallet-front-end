@@ -1,9 +1,9 @@
 .DivTbl {
     margin-top: 20px;
-    background: #98B4AA;
+    background: #ffffff;
     border-radius: 30px;
     border: 0px solid;
-    width: 360px;
+    width: 400px;
     box-sizing: border-box;
     padding-top: 16px;
     padding-bottom: 20px;
@@ -12,10 +12,19 @@
 .PadTbl {
     margin-right: 178px;
     padding-left: 30px;
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 27px;
 }
 
 .PadTable {
+    float: right;
     padding-right: 30px;
+    font-family: 'Circe';
+    font-size: 16px;
+    line-height: 24px;
 }
 
 .DivTable {
@@ -46,5 +55,31 @@
 }
 
 .PadCtgr {
-    padding-left: 180px;
+    float: right;
+}
+
+.TableItem {
+    display: block;
+    width: 400px;
+    margin: 0 auto;
+    padding-left: 30px;
+    padding-right: 30px;
+}
+
+.Table {}
+
+p {
+    display: inline;
+}
+
+.lineTbl {
+    width: 400px;
+}
+
+.FontCtgr {
+    font-family: 'Circe';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 16px;
+    line-height: 24px;
 }

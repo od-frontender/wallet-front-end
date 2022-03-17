@@ -1,6 +1,6 @@
 import React from 'react';
 import Media from 'react-media';
-import TableItem from './TableItem';
+
 import Table from './Table';
 import Balance from '../Balance/Balance';
 import Currency from '../Currency';
@@ -14,7 +14,7 @@ function TableList() {
         {matches =>
           matches ? (
             <>
-              <TableItem />
+  
 
               
                 <Table />
@@ -25,7 +25,6 @@ function TableList() {
             <section className={t.statistacs}>
               <Currency />
               <Balance />
-              <TableItem />
              
                 <Table  />
               
